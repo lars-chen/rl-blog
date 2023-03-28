@@ -1,8 +1,9 @@
 ---
-title:  "Advanced examples"
+title:  "learning barrier certificates"
 mathjax: true
 layout: post
 categories: media
+date: 2023-03-28
 ---
 
 
@@ -16,10 +17,10 @@ In reinforcement learning (RL), an agent is trained to navigate an enivronment a
 
 A current area of research uses constrained policy optimization (CPO) that reduce training-time safety incursions. This method approximates a constraint cost of a policy update and ensures that the new policy stays within the limitations. However, CPO ulimately learns to approximate the constraint cost by encountering unsafe states and comparing these to safe states - therefore, the set of safe states is learned after running into unsafe states. Another line of work uses Lyaponov functions to verify the safety of a set of states but requires provided dynamics model that is non-trivially crafted by the researcher.
 
-The paper that we adapt in this project, ["Learning Barrier Certificates: Towards Safe Reinforcement Learning with Zero Training-time Violations"](https://arxiv.org/pdf/2108.01846.pdf) (Yuping Luo and Tengyu Ma, 2022) which uses barrier certificate function similar to Lyaponov functions that certify viable states. The novel approach of this work is that the barrier certificates are learned iteratively while calibrating a dynamics model, optimizing the policy and adding safe trajectories to a replay buffer. 
+The paper that we adapt in this project, ["Learning Barrier Certificates: Towards Safe Reinforcement Learning with Zero Training-time Violations"](https://arxiv.org/pdf/2108.01846.pdf) (Yuping Luo and Tengyu Ma, 2022) uses barrier certificate function similar to Lyaponov functions that certify viable states. The novel approach of this work is that the barrier certificates are learned iteratively while calibrating a dynamics model, optimizing the policy and adding safe trajectories to a replay buffer. 
 
 
-## so, what are barrier certificates?
+## what are barrier certificates?
 
 A barrier certificates,  $$h: S \rightarrow \mathbb{R}$$, maps the state space to real numbers, such that given a time-discrete dynamics model, $$f(s_t) = s_{t+1}$$ :
 
@@ -33,23 +34,6 @@ $$
 h(s_{t+1}) = h(f(s_t)) > 0
 $$
 
-
-## Code
-
-Embed code by putting `{{ "{% highlight language " }}%}` `{{ "{% endhighlight " }}%}` blocks around it. Adding the parameter `linenos` will show source lines besides the code.
-
-{% highlight c %}
-
-static void asyncEnabled(Dict* args, void* vAdmin, String* txid, struct Allocator* requestAlloc)
-{
-    struct Admin* admin = Identity_check((struct Admin*) vAdmin);
-    int64_t enabled = admin->asyncEnabled;
-    Dict d = Dict_CONST(String_CONST("asyncEnabled"), Int_OBJ(enabled), NULL);
-    Admin_sendMessage(&d, txid, admin);
-}
-
-{% endhighlight %}
+Of course, these barrier functions need to be learned over many iterations 
 
 
-
-{% include embed.html url="https://www.youtube.com/embed/_C0A5zX-iqM" %}
