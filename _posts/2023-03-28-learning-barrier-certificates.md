@@ -28,12 +28,25 @@ $$
 h(s) > 0, h(f(s)) > 0
 $$
 
-Letting valid states, i.e. states that do not lead to unsafe states, be defined by $h(s) > 0$, then we ensure the agent never enters an unsafe state.
+Letting valid states, i.e. states that do not lead to unsafe states, be defined by $$h(s) > 0$$, then we ensure the agent never enters an unsafe state.
 
 $$
 h(s_{t+1}) = h(f(s_t)) > 0
 $$
 
-Of course, these barrier functions need to be learned over many iterations 
+Of course, these barrier functions need to be learned over many iterations which is done in the paper by training a neural network $$h_{\phi}$$ that satisfies the following three requirements:
+
+*R1.* $$h(s_{unsafe}) < 0$$
+*R2.* $$h_{0} \geq 0$$
+*R3.* $$\underset{min}{s' \in \hat{T}(s, \pi(s))} h(s) \geq 0$$
+
+The first two can be satisfied by forumalating the network, $$h_{\phi}$$, in such a way:
+
+$$
+$$h_{\phi}$$ = 1 - Softplus(f_{\phi}(s) - f_{\phi}(s_0)) - B_{unsafe} $$
+$$
+
+
+
 
 
