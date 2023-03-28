@@ -21,7 +21,7 @@ The paper that we adapt in this project, ["Learning Barrier Certificates: Toward
 
 ## so, what are barrier certificates?
 
-A barrier certificates,  $h: S \rightarrow \mathbb{R}$, maps the state space to real numbers, such that given a time-discrete dynamics model, $f(s_t) = s_{t+1}$ :
+A barrier certificates,  $$h: S \rightarrow \mathbb{R}$$, maps the state space to real numbers, such that given a time-discrete dynamics model, $$f(s_t) = s_{t+1}$$ :
 
 $$
 h(s) > 0, h(f(s)) > 0
