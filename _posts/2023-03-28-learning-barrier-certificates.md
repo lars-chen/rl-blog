@@ -24,15 +24,15 @@ The paper that we adapt in this project, ["Learning Barrier Certificates: Toward
 
 A barrier certificates,  $$h: S \rightarrow \mathbb{R}$$, maps the state space to real numbers, such that given a time-discrete dynamics model, $$f(s_t) = s_{t+1}$$ :
 
-$$
-h(s) > 0, h(f(s)) > 0
-$$
+> $$
+> h(s) > 0, h(f(s)) > 0
+> $$
 
 Letting valid states, i.e. states that do not lead to unsafe states, be defined by $$h(s) > 0$$, then we ensure the agent never enters an unsafe state.
 
-$$
-h(s_{t+1}) = h(f(s_t)) > 0
-$$
+> $$
+> h(s_{t+1}) = h(f(s_t)) > 0
+> $$
 
 Of course, these barrier functions need to be learned over many iterations which is done in the paper by training a neural network $$h_{\phi}$$ that satisfies the following three requirements:
 
