@@ -36,9 +36,9 @@ Letting valid states, i.e. states that do not lead to unsafe states, be defined 
 
 Of course, these barrier functions need to be learned over many iterations which is done in the paper by training a neural network $$h_{\phi}$$ that satisfies the following three requirements:
 
-> *R1:*   $$h(s_{unsafe}) < 0$$ /
-> *R2:*   $$h_{0} \geq 0$$ /
-> *R3:*   $$\underset{s' \in \hat{T}(s, \pi(s))}{min} h(s) \geq 0$$ /
+> 1.  $$h(s_{unsafe}) < 0$$ 
+> 2.  $$h_{0} \geq 0$$ 
+> 3.  $$\underset{s' \in \hat{T}(s, \pi(s))}{min} h(s) \geq 0$$ 
 
 The first two  requirements can be satisfied by formulating the network, $$h_{\phi}$$, in such a way:
 
