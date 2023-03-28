@@ -24,33 +24,33 @@ The paper that we adapt in this project, ["Learning Barrier Certificates: Toward
 
 A barrier certificates,  $$h: S \rightarrow \mathbb{R}$$, maps the state space to real numbers, such that given a time-discrete dynamics model, $$f(s_t) = s_{t+1}$$ :
 
-> $$
-> h(s) > 0, h(f(s)) > 0
-> $$
+$$
+h(s) > 0, h(f(s)) > 0
+$$
 
 Letting valid states, i.e. states that do not lead to unsafe states, be defined by $$h(s) > 0$$, then we ensure the agent never enters an unsafe state.
 
-> $$
-> h(s_{t+1}) = h(f(s_t)) > 0
-> $$
+$$
+h(s_{t+1}) = h(f(s_t)) > 0
+$$
 
 Of course, these barrier functions need to be learned over many iterations which is done in the paper by training a neural network $$h_{\phi}$$ that satisfies the following three requirements:
 
->  $$
->  \mathbf{1.} \quad h(s_{unsafe}) < 0 \qquad \qquad  \mathbf{2.} \quad h_{0} \geq 0 \qquad \qquad  \mathbf{3.} \quad \underset{s' \in \hat{T}(s, \pi(s))}{min} h(s) \geq 0
->  $$
+$$
+\mathbf{1.} \quad h(s_{unsafe}) < 0 \qquad \qquad  \mathbf{2.} \quad h_{0} \geq 0 \qquad \qquad  \mathbf{3.} \quad \underset{s' \in \hat{T}(s, \pi(s))}{min} h(s) \geq 0
+$$
 
 The first two  requirements can be satisfied by formulating the network, $$h_{\phi}$$, in such a way:
 
-> $$
-> h_{\phi} = 1 - Softplus(f_{\phi}(s) - f_{\phi}(s_0)) - B_{unsafe}
-> $$
+$$
+h_{\phi} = 1 - Softplus(f_{\phi}(s) - f_{\phi}(s_0)) - B_{unsafe}
+$$
 
 The third requirement is satsified by first adversarially calculated the worst possible next state $$s*$$. Then, for that worst case scenario the barrier function $$\phi$$ must be parameteritzed such that the worst case has the lowest barrier certificate value. The aim is to only include values in the set of valid states if their certificate values are positive:   
 
-> $$
-> \underset{\phi}{C*} (h_{\phi}, U, \pi) = \underset{\phi}{min} \underset{s' \in \hat{T}} \quad {max} -h(s')
-> $$
+$$
+\underset{\phi}{C*} (h_{\phi}, U, \pi) = \underset{\phi}{min} \underset{s' \in \hat{T}} \quad {max} -h(s')
+$$
 
 
 
