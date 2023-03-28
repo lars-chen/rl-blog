@@ -38,12 +38,12 @@ Of course, these barrier functions need to be learned over many iterations which
 
 *R1.* $$h(s_{unsafe}) < 0$$
 *R2.* $$h_{0} \geq 0$$
-*R3.* $$\underset{min}{s' \in \hat{T}(s, \pi(s))} h(s) \geq 0$$
+*R3.* $$\underset{s' \in \hat{T}(s, \pi(s))}{min} h(s) \geq 0$$
 
 The first two can be satisfied by forumalating the network, $$h_{\phi}$$, in such a way:
 
 $$
-$$h_{\phi}$$ = 1 - Softplus(f_{\phi}(s) - f_{\phi}(s_0)) - B_{unsafe} $$
+$$h_{\phi} = 1 - Softplus(f_{\phi}(s) - f_{\phi}(s_0)) - B_{unsafe} $$
 $$
 
 
