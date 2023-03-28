@@ -7,11 +7,11 @@ date: 2023-03-28
 ---
 
 
-## Abstract
+## abstract
 
 Having a barrier function verify safe states is an often-used strategy to guarantee that one doesn’t incur training-time errors in Safe RL. Depending on how one sets up this barrier function, it can require effortful hand-tuning specific to any new environment.  Last year, Luo and Ma proposed a method that sidesteps this effort by co-learning three elements: 1) improving the confidence of the physics model, 2) increasing the size of verified regions, and 3) optimizing the policy. They posit that any of the three elements will incrementally improve after benefitting from improvements in the other two elements, creating a complimentary sequential structure. Instead of requiring a pre-made barrier function, their algorithm now requires an initial safe policy as a starting point. They showed in simulations with low dimensional environments that their algorithm was capable of expanding the safe region while incurring no training errors. We introduced the algorithm into two environments with higher dimensionality: double-cartpole and hopper, and we performed an analysis on the safety of pre-trained agents in the two environments. We found that  _______
 
-## Introduction
+## introduction
 
 In reinforcement learning (RL), an agent is trained to navigate an enivronment and maxmize its reward using a function crafted by human investigator (Sutton and Barto, 1998). RL has been shown it can complete high-dimensional tasks in robotic simulation environments (Akkaya et al., 2019) by exploring many possible states and optimizing its policy. In real world applications of RL, such as biomedical robotics, low reward areas could be states that hurt the patient or damage the agent itself. 
 
@@ -36,15 +36,15 @@ $$
 
 Of course, these barrier functions need to be learned over many iterations which is done in the paper by training a neural network $$h_{\phi}$$ that satisfies the following three requirements:
 
-> *R1.* $$h(s_{unsafe}) < 0$$
-> *R2.* $$h_{0} \geq 0$$
-> *R3.* $$\underset{s' \in \hat{T}(s, \pi(s))}{min} h(s) \geq 0$$
+> *R1:*   $$h(s_{unsafe}) < 0$$
+> *R2:*   $$h_{0} \geq 0$$
+> *R3:*   $$\underset{s' \in \hat{T}(s, \pi(s))}{min} h(s) \geq 0$$
 
-The first two can be satisfied by forumalating the network, $$h_{\phi}$$, in such a way:
+The first two  requirements can be satisfied by formulating the network, $$h_{\phi}$$, in such a way:
 
-$$
-h_{\phi} = 1 - Softplus(f_{\phi}(s) - f_{\phi}(s_0)) - B_{unsafe}
-$$
+> $$
+> h_{\phi} = 1 - Softplus(f_{\phi}(s) - f_{\phi}(s_0)) - B_{unsafe}
+> $$
 
 
 
