@@ -49,7 +49,7 @@ The first two  requirements can be satisfied by formulating the network, $$h_{\p
 The third requirement is satsified by first adversarially calculated the worst possible next state $$s*$$. Then, for that worst case scenario the barrier function $$\phi$$ must be parameteritzed such that the worst case has the lowest barrier certificate value. The aim is to only include values in the set of valid states if their certificate values are positive:   
 
 > $$
-> \underset{\phi}{C*} (h_{\phi}, U, \pi) = \underset{\phi}{min} \underset{s' \in \hat{T}{max} -h(s')
+> \underset{\phi}{C*} (h_{\phi}, U, \pi) = \underset{\phi}{min} \underset{s' \in \hat{T}}{max} -h(s')
 > $$
 
 
