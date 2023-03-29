@@ -59,7 +59,7 @@ $$
 \underset{\phi}{C*} (h_{\phi}, U, \pi) = \underset{\phi}{min} \quad \underset{s' \in \hat{T}}{max} -h(s')
 $$
 
-Where $$C{h}$$ is the set of all valid states.
+Where $$C_{h}$$ is the set of all valid states.
 
 ## How do we apply barrier certificates?
 
