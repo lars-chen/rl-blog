@@ -28,7 +28,7 @@ Foundational to our paper are approaches which fit Lyapunov functions with a dyn
 The name of a barrier certificate gives most readers a good idea of the goal it wishes to accomplish: having a function that tells us whether a state lands within a boundary. But what is the boundary in question and how does the barrier certificate guarantee that? To begin, we don't just want to find states that are safe, but also states which *never* will encounter unsafe states. States that meet this strict criterion are called valid. The barrier certificate  $$h: S \rightarrow \mathbb{R}$$, maps the state space to real numbers. such that given a time-discrete dynamics model, $$f(s_t) = s_{t+1}$$ :
 
 $$
-h(s) > 0 implies h(f(s)) > 0
+h(s) > 0 , h(f(s)) > 0
 $$
 
 Letting valid states be defined by $$h(s) > 0$$, then we ensure that if an agent is safe at time $$t$$ then it will be safe at time $$t + 1$$.
