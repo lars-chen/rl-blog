@@ -43,7 +43,7 @@ $$
 \mathbf{1.} \quad h(s_{unsafe}) < 0 \qquad \qquad  \mathbf{2.} \quad h_{0} \geq 0 \qquad \qquad  \mathbf{3.} \quad \underset{s' \in \hat{T}(s, \pi(s))}{min} h(s) \geq 0
 $$
 
-Namely that all unsafe states give a negative barrier value, the starting state is safe, and the barrier certificate for the worst-next-state from an already safe state will give a positive value. 
+Namely 1) that all unsafe states give a negative barrier value, 2) the starting state is safe, and 3) the barrier certificate for the worst-next-state from an already safe state will give a positive value. 
 
 The first two requirements are satisfied by always beginning the model in a pre-known safe state and formulating the network, $$h_{\phi}$$, in such a way:
 
@@ -61,7 +61,17 @@ $$
 
 Where the term $$\underset{\phi}{C*}$$ is derived from $$C_{h}$$ being the set of all valid states.
 
-## How do we apply barrier certificates?
+## How do barrier certificates fit into the CRABS algorithm?
 
-Now that we have covered the novel aspect of CRABS, 
+Now that we have covered the novel part of CRABS, we need to address the infrastructure of the algorithm and how it co-trains the barrier certificates along with the dynamics model.
+The first step of CRABS is to pretrain a soft-actor-critic model (https://arxiv.org/abs/1801.01290) until one is satisfied that the agent behaves safely.
+The second step is to safely explore. Exploration is performed by adding gaussian noise to the SAC agent and having it make actions. When any action leaves certified space, the agent falls back on a safeguard policy.
+Exploration has added new trajectories to our buffer of simulations, which allows us to recalibrate our dynamics model, $$T(hat)$$ #todo put in pi and thats here. 
+Because the dynamics model has become more confident about our environment, it allows us to retrain the barrier certificate to expand the number of verified regions.
+Finally we re-optimize our policy while it is constrained by the barrier certificate. 
 
+## Environments
+
+In the paper, the authors focused on low-dimensionality, high risk environments based on Cartpole and Pendulum. They were able to consistently find that CRABS has zero training-time violations while performing admirably (and sometimes better than other well known algorithms) in terms of reward maximization. We chose to expand the environments in two cases: One where we increase the risk and one where we increase the complexity of the dynamics. 
+The first environment we chose is called "Hover." It uses the double cartpole environment and rewards the agent when the tip of the second pole is halfway to its maximum height, while being unsafe if the first joint bends further than a strict threshold. 
+The second environment is called "zoom" where we set up the Mujoco Hopper environment to reward fast z-axis movement while the angle of the top stayed within a threshold. This did not incentivize dangerous behaviour as much as the Hover environment, however we wished to show that the algorithm could expand the barrier certificate and better learn dynamics of the system in this setup.
