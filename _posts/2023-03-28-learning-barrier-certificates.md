@@ -25,35 +25,43 @@ Foundational to our paper are approaches which fit Lyapunov functions with a dyn
 
 ## what are barrier certificates?
 
-The name of a barrier certificate gives most readers a good idea of the goal it wishes to accomplish: having a function that tells us whether a state lands within a boundary. But what is the boundary in question and how does the barrier certificate guarantee that? To begin, we don't just want to find states that are safe, but also states which *never* will encounter unsafe states. States that meet this strict criterion are called valid. The barrier certificate  $$h: S \rightarrow \mathbb{R}$$, maps the state space to real numbers. such that given a time-discrete dynamics model, $$f(s_t) = s_{t+1}$$ :
+The name of a barrier certificate gives most readers a good idea of the goal it wishes to accomplish: having a function that tells us whether a state lands within a boundary. But what is the boundary in question and how does the barrier certificate guarantee that? To begin, we don't just want to find states that are safe, but also states which *never* will encounter unsafe states. States that meet this strict criterion are called valid. The barrier certificate  $$h: S \rightarrow \mathbb{R}$$, maps the state space to real numbers, with the below property: 
 
 $$
 h(s) > 0 , h(f(s)) > 0
 $$
 
-Letting valid states be defined by $$h(s) > 0$$, then we ensure that if an agent is safe at time $$t$$ then it will be safe at time $$t + 1$$.
+We can choose our function to be the one that moves the time-discrete dynamics model forward one step, $$f(s_t) = s_{t+1}$$. Letting valid states be defined by $$h(s) > 0$$, then we ensure that if an agent is safe at time $$t$$ then it will be safe at time $$t + 1$$. Because it is safe at time $$t + 1$$ it will be safe at time $$t + 2$$ and so forth. 
 
 $$
-h(s_{t+1}) = h(f(s_t)) > 0
+h(s_{t+1}) = h(f(s_t)) > 0, h(s_{t+n}) > 0
 $$
 
-Of course, these barrier functions need to be learned over many iterations which is done in the paper by training a neural network $$h_{\phi}$$ that satisfies the following three requirements:
+How do we learn a barrier certificate that guarantees this feature? By training a neural network $$h_{\phi}$$ that satisfies the following three requirements:
 
 $$
 \mathbf{1.} \quad h(s_{unsafe}) < 0 \qquad \qquad  \mathbf{2.} \quad h_{0} \geq 0 \qquad \qquad  \mathbf{3.} \quad \underset{s' \in \hat{T}(s, \pi(s))}{min} h(s) \geq 0
 $$
 
-The first two  requirements can be satisfied by formulating the network, $$h_{\phi}$$, in such a way:
+Namely that all unsafe states give a negative barrier value, the starting state is safe, and the barrier certificate for the worst-next-state from an already safe state will give a positive value. 
+
+The first two requirements are satisfied by always beginning the model in a pre-known safe state and formulating the network, $$h_{\phi}$$, in such a way:
 
 $$
-h_{\phi} = 1 - Softplus(f_{\phi}(s) - f_{\phi}(s_0)) - B_{unsafe}
+h_{\phi} = 1 - Softplus(f_{\phi}(s) - f_{\phi}(s_0)) - B_{unsafe}(s)
 $$
 
-The third requirement is satsified by first adversarially calculated the worst possible next state $$s*$$. Then, for that worst case scenario the barrier function $$\phi$$ must be parameteritzed such that the worst case has the lowest barrier certificate value. The aim is to only include values in the set of valid states if their certificate values are positive:   
+Where $$B_{unsafe} > 1$$ for all unsafe states. 
+
+The third requirement is satsified by first finding the aforementioned worst next state that stems from an aleady known valid state, called $$s*$$. This is calculated with the MALA algorithm, a stochstic gradient Langevin algorithm. Remember that since $$s*$$ is the next state of a valid state, we want our neural network to also certify it as safe. For this worst case scenario the barrier function $$\phi$$ is trained to maximize its ouput. The authors formulated this as the below min-max problem
 
 $$
 \underset{\phi}{C*} (h_{\phi}, U, \pi) = \underset{\phi}{min} \quad \underset{s' \in \hat{T}}{max} -h(s')
 $$
 
+Where $$C{h}$$ is the set of all valid states.
 
+## How do we apply barrier certificates?
+
+Now that we have covered the novel aspect of CRABS, 
 
