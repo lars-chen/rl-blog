@@ -106,7 +106,8 @@ In the methodology section we mentioned that this algorithm requires a pre-train
 We found that the environment reached a plateau of safety around 2000 steps. When we ran this on Hover and Zoom, more complex environments, we were surprised/not surprised to find that pre-training needed xxxxxxx
 
 
-References
+#### References
+----------------
 
 [^SuttonBarto2018]: Sutton, R. S., &amp; Barto, A. G. (2018). Reinforcement learning: An introduction. MIT Press Ltd. 
 
