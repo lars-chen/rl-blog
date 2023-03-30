@@ -82,7 +82,7 @@ In the paper, the authors focused on low-dimensionality, high risk environments 
 The first environment we chose is called "Hover." It uses the double cartpole environment and rewards the agent when the tip of the second pole is halfway to its maximum height, while being unsafe if the first joint bends further than a strict threshold. 
 
 
-![Pendulum](https://github.com/lars-chen/rl-blog/blob/master/assets/images/pendulum_examp.gif?raw=true) 
+![Pendulum](https://github.com/lars-chen/rl-blog/blob/master/assets/images/pendulum_examp.gif?raw=true) ![Cartpole](https://github.com/lars-chen/rl-blog/blob/master/assets/images/single_examp.gif?raw=true)
 
 
 
