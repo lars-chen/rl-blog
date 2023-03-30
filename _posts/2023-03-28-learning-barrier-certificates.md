@@ -9,8 +9,9 @@ date: 2023-03-28
 ### Table of Contents
 1. [abstract](#abstract)
 2. [introduction](#introduction)
-3. [barrier certificates](#what are barrier certificates)
-4. [environments](#Environments)
+3. [barrier certificates](#what are barrier certificates?)
+4. [barrier certificates](#How do barrier certificates fit into the CRABS algorithm?)
+5. [environments](#Environments)
 
 
 ## abstract
@@ -23,9 +24,10 @@ In reinforcement learning (RL), an agent is trained to navigate an environment a
 
 There are already many unique and diverse strategies to accomplish the goal of safety. In a review written in 2013, García and Fernández[^GarciaFernandez2015] divided safe RL algorithms into two main genres: algorithms that modify the optimality criterion with a safety factor (like primal-dual problems which add penalty terms to the Lagrangian) and algorithms that modify the exploration behavior. Nearly ten years later many new sophisticated and inventive methods have been proposed, Gu et al.[^Gu2023] chose to make the main distinction between algorithms in whether they are model based or model free. 
 
-CRABS falls firmly into being model-based and modifying exploration behavior. Before going into details of CRABS we will mention other strategies that exemplify the diversity of the categories above. One sub-area of staying within constraints is Trust Region Policy Optimization, which guarantees policies do not make too large of leaps by requiring new policies have a low KL-Divergence from an old safe policy (https://arxiv.org/pdf/1502.05477.pdf). Grown out of Trust Region methods is Constraint Policy Optimization (CPO), one of the most well-known recent model-free developments in RL. It is a gradient method that optimizes a constraint cost for a policy update. CPO ultimately learns to approximate the constraint cost by encountering unsafe states and comparing these to safe states. 
-The actor-critic method, which isolates the reward function and value function to separate agents has also been combined with CPO, again needing to encounter unsafe states but yielding high rewards (https://arxiv.org/pdf/2010.15920.pdf). Some researchers modify the exploration behavior by providing batches of existing data (https://arxiv.org/pdf/1903.08738.pdf) or by training beforehand in a sandbox environment where healthy errors can be made before training in the “real” environment where fatal errors would occur (http://proceedings.mlr.press/v119/zhang20e/zhang20e.pdf). Some allow for humans to act as teachers and guide the agent to learn faster and also avoid bad states (https://hal.science/hal-01215273/document).  Depending on the researcher, these methods may or may not incorporate a dynamics model. 
-Foundational to our paper are approaches which fit Lyapunov functions with a dynamics model to approximate a barrier around safe states (https://arxiv.org/pdf/1805.07708.pdf). Guaranteeing Lyapunov stability in the broader sense guarantees that states near an equilibrium point stay there forever, which translates easily to reinforcement learning. A similar idea is used by other papers which want to guarantee that all visited states are “reversible” – meaning the agent is known to be safe if it can travel back to other safe areas (https://arxiv.org/pdf/1205.4810.pdf)
+CRABS falls firmly into being model-based and modifying exploration behavior. Before going into details of CRABS we will mention other strategies that exemplify the diversity of the categories above. One sub-area of staying within constraints is Trust Region Policy Optimization, which guarantees policies do not make too large of leaps by requiring new policies have a low KL-Divergence from an old safe policy.[^Schulman2017] Grown out of Trust Region methods is Constraint Policy Optimization (CPO), one of the most well-known recent model-free developments in RL. It is a gradient method that optimizes a constraint cost for a policy update. CPO ultimately learns to approximate the constraint cost by encountering unsafe states and comparing these to safe states. 
+
+The actor-critic method, which isolates the reward function and value function to separate agents has also been combined with CPO, again needing to encounter unsafe states but yielding high rewards.[^Balakrishna2017] Some researchers modify the exploration behavior by providing batches of existing data[^Le2019] or by training beforehand in a sandbox environment where healthy errors can be made before training in the “real” environment where fatal errors would occur[^Zhang2020]. Some allow for humans to act as teachers and guide the agent to learn faster and also avoid bad states [^Zimmer2014].  Depending on the researcher, these methods may or may not incorporate a dynamics model. 
+Foundational to our paper are approaches which fit Lyapunov functions with a dynamics model to approximate a barrier around safe states.[^Chow2018] Guaranteeing Lyapunov stability in the broader sense guarantees that states near an equilibrium point stay there forever, which translates easily to reinforcement learning. A similar idea is used by other papers which want to guarantee that all visited states are “reversible” – meaning the agent is known to be safe if it can travel back to other safe areas [^Molodovan2012].
 
 
 
@@ -67,10 +69,10 @@ $$
 
 Where the term $$\underset{\phi}{C*}$$ is derived from $$C_{h}$$ being the set of all valid states.
 
-## Methodology: How do barrier certificates fit into CRABS?
+## How do barrier certificates fit into the CRABS algorithm?
 
 Now that we have covered the novel part of CRABS, we need to address the infrastructure of the algorithm and how it co-trains the barrier certificates along with the dynamics model.
-The first step of CRABS is to pretrain a soft-actor-critic policy, $$\pi_{init}$$ (https://arxiv.org/abs/1801.01290) until one is satisfied that the agent behaves safely.
+The first step of CRABS is to pretrain a soft-actor-critic policy, $$\pi_{init}$$[^Haarnoja2018] until one is satisfied that the agent behaves safely.
 The second step is to safely explore. Exploration is performed by adding gaussian noise to the SAC agent and having it make actions. When any action leaves certified space, the agent falls back on a safeguard policy.
 Exploration has added new trajectories to our buffer of simulations, which allows us to recalibrate our dynamics model, $$\hat{T}$$ #todo put in pi and thats here. 
 Because the dynamics model has become more confident about our environment, it allows us to retrain the barrier certificate to expand the number of verified regions.
@@ -78,26 +80,14 @@ Finally we re-optimize our policy while it is constrained by the barrier certifi
 
 ## Environments
 
-![Pendulum](https://github.com/lars-chen/rl-blog/blob/master/assets/images/pendulum_examp.gif?raw=true) ![Cartpole](https://github.com/lars-chen/rl-blog/blob/master/assets/images/single_examp.gif?raw=true)
+In the paper, the authors focused on low-dimensionality, high risk environments based on Cartpole and Pendulum. They were able to consistently find that CRABS has zero training-time violations while performing admirably (and sometimes better than other well known algorithms) in terms of reward maximization. We chose to expand the environments in two cases: One where we increase the risk and one where we increase the complexity of the dynamics. 
+The first environment we chose is called "Hover." It uses the double cartpole environment and rewards the agent when the tip of the second pole is halfway to its maximum height, while being unsafe if the first joint bends further than a strict threshold. 
 
-In the paper, the authors focused on low-dimensionality, high risk environments based on Cartpole and Pendulum in the Gym-Mujoco simulation suite. They were able to consistently find that CRABS has zero training-time violations while performing admirably (and sometimes better than other well known algorithms) in terms of reward maximization. 
-We chose to expand into two new Mujoco environments with two cases: One where we increase the risk and one where we increase the complexity of the dynamics. 
+![Pendulum](https://lars-chen.github.io/rl-blog/learning-barrier-certificates/assets/images/pendulum_examp.gif?raw=true)
 
-![Double Pendulum](https://github.com/lars-chen/rl-blog/blob/master/assets/images/double_examp.gif?raw=true) ![Cartpole](https://github.com/lars-chen/rl-blog/blob/master/assets/images/hopper_examp.gif?raw=true)
+The second environment is called "zoom" where we set up the Mujoco Hopper environment to reward fast z-axis movement while the angle of the top stayed within a threshold. This did not incentivize dangerous behaviour as much as the Hover environment, however we wished to show that the algorithm could expand the barrier certificate and better learn dynamics of the system in this setup.
 
-The first environment we chose is called "Hover." It uses the double cartpole environment and rewards the agent when the tip of the second pole is halfway to its maximum height, while being unsafe if the first joint bends further than a strict threshold. The second environment is called "zoom" where we set up the Mujoco Hopper environment to reward fast z-axis movement while the angle of the top stayed within a threshold. This did not incentivize dangerous behaviour as much as the Hover environment, however we wished to show that the algorithm could expand the barrier certificate and better learn dynamics of the system in this setup.
 
-## Pre-training 
-In the methodology section we mentioned that this algorithm requires a pre-trained safe agent. The authors pre-trained with SAC for 10,000 steps and checked every following 1,000 steps whether the policy was safe, taking the first safe policy they found. Firt we verified their results on the cartpole environment.
-
-![Single Pendulum Pretrain Safety](https://github.com/lars-chen/rl-blog/blob/210451276974ed2351cf62c5539173460c46e18d/assets/graphs/single-pretrain-safety.png)
-
-We found that the environment reached a plateau of safety around 2000 steps. When we ran this on Hover and Zoom, more complex environments, we were surprised/not surprised to find that pre-training needed xxxxxxxx
-  
-  
-
-  
-   
 References
 -----------
 
@@ -108,3 +98,23 @@ References
 [^Akkaya2019]: Akkaya, I., Solving Rubik's Cube with a Robot Hand _arXiv.org_, p.07113 available at: [https://arxiv.org/abs/1910.07113](https://arxiv.org/abs/1910.07113).
 
 [^Gu2023]: Gu, S., 2023. A Review of Safe Reinforcement Learning: Methods, Theory and Applications. _arXiv.org_, p.10330. Available at: [https://arxiv.org/abs/2205.10330](https://arxiv.org/abs/2205.10330).
+
+[^Schulman2017]: Schulman, J., 2023. Trust Region Policy Optimization _arXiv.org_, p.05477. Available at: [https://arxiv.org/pdf/1502.05477.pdf
+](https://arxiv.org/pdf/1502.05477.pdf)
+
+[^Balakrishna2017]: Thananjeyan, B., &amp; Balakrishna, A 2021. Recovery RL: Safe Reinforcement Learning with Learned Recovery Zones _arXiv.org_, p.15920. Available at: [https://arxiv.org/pdf/2010.15920.pdf](https://arxiv.org/pdf/2010.15920.pdf)
+
+[^Le2019]: Le, H., 2019. Recovery RL: Batch Policy Learning under Constraints _arXiv.org_, p.08738. Available at: [https://arxiv.org/pdf/1903.08738.pdf
+](https://arxiv.org/pdf/1903.08738.pdf)
+
+[^Zhang2020]: Zhang, J., Cheung, B., Finn, C., Levine, S., & Jayaraman, D. (2020, November). Cautious adaptation for reinforcement learning in safety-critical settings. In International Conference on Machine Learning (pp. 11055-11065). PMLR. Available at: [https://proceedings.mlr.press/v119/zhang20e.html](https://proceedings.mlr.press/v119/zhang20e.html)
+
+[^Zimmer2014]: Zimmer, M., Viappiani, P., & Weng, P. (2014, May). Teacher-student framework: a reinforcement learning approach. In AAMAS Workshop Autonomous Robots and Multirobot Systems. Available at: [https://hal.science/hal-01215273/](https://hal.science/hal-01215273/)
+
+[^Chow2018]:  Chow, Y., Nachum, O., Duenz-Guzman, E., Ghavamzadeh, M.  2018. A Lyapunov-based Approach to Safe Reinforcement Learning _arXiv.org_, p.07708v1. Available at: [https://arxiv.org/pdf/1805.07708.pdf](https://arxiv.org/pdf/1805.07708.pdf)
+
+[^Molodovan2012]: Moldovan, T., Abbeel, P.,  2012. Safe Exploration in Markov Decision Processes _arXiv.org_, p.4810. Available at: [https://arxiv.org/pdf/1205.4810.pdf](https://arxiv.org/pdf/1205.4810.pdf)
+
+[^Haarnoja2018]: Haarnoja, T., Zhou, A., Abbeel, P., Levine, S., 2012. Soft Actor-Critic: Off-Policy Maximum Entropy Deep Reinforcement Learning with a Stochastic Actor _arXiv.org_, p.01290. Available at: [https://arxiv.org/abs/1801.01290](https://arxiv.org/abs/1801.01290)
+
+
