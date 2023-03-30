@@ -3,6 +3,7 @@ title:  "learning barrier certificates"
 mathjax: true
 layout: post
 categories: media
+giscus_comments: true
 date: 2023-03-28
 ---
 
@@ -106,6 +107,8 @@ In the methodology section we mentioned that this algorithm requires a pre-train
 We found that the environment reached a plateau of safety around 2000 steps. When we ran this on Hover and Zoom, more complex environments, we were surprised/not surprised to find that pre-training needed xxxxxxx
 
 
+
+---------------
 #### References
 ----------------
 
@@ -117,13 +120,11 @@ We found that the environment reached a plateau of safety around 2000 steps. Whe
 
 [^Gu2023]: Gu, S., 2023. A Review of Safe Reinforcement Learning: Methods, Theory and Applications. _arXiv.org_, p.10330. Available at: [https://arxiv.org/abs/2205.10330](https://arxiv.org/abs/2205.10330).
 
-[^Schulman2017]: Schulman, J., 2023. Trust Region Policy Optimization _arXiv.org_, p.05477. Available at: [https://arxiv.org/pdf/1502.05477.pdf
-](https://arxiv.org/pdf/1502.05477.pdf)
+[^Schulman2017]: Schulman, J., 2023. Trust Region Policy Optimization _arXiv.org_, p.05477. 
 
 [^Balakrishna2017]: Thananjeyan, B., &amp; Balakrishna, A 2021. Recovery RL: Safe Reinforcement Learning with Learned Recovery Zones _arXiv.org_, p.15920. Available at: [https://arxiv.org/pdf/2010.15920.pdf](https://arxiv.org/pdf/2010.15920.pdf)
 
-[^Le2019]: Le, H., 2019. Recovery RL: Batch Policy Learning under Constraints _arXiv.org_, p.08738. Available at: [https://arxiv.org/pdf/1903.08738.pdf
-](https://arxiv.org/pdf/1903.08738.pdf)
+[^Le2019]: Le, H., 2019. Recovery RL: Batch Policy Learning under Constraints _arXiv.org_, p.08738.
 
 [^Zhang2020]: Zhang, J., Cheung, B., Finn, C., Levine, S., & Jayaraman, D. (2020, November). Cautious adaptation for reinforcement learning in safety-critical settings. In International Conference on Machine Learning (pp. 11055-11065). PMLR. Available at: [https://proceedings.mlr.press/v119/zhang20e.html](https://proceedings.mlr.press/v119/zhang20e.html)
 
