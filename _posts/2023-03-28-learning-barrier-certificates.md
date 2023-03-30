@@ -67,10 +67,4 @@ Where the term $$\underset{\phi}{C*}$$ is derived from $$C_{h}$$ being the set o
 Now that we have covered the novel aspect of CRABS, 
 
 
-@book{ruby,
-  title     = {The Ruby Programming Language},
-  author    = {Flanagan, David and Matsumoto, Yukihiro},
-  year      = {2008},
-  publisher = {O'Reilly Media}
-}
 
