@@ -64,7 +64,7 @@ Where the term $$\underset{\phi}{C*}$$ is derived from $$C_{h}$$ being the set o
 ## How do barrier certificates fit into the CRABS algorithm?
 
 Now that we have covered the novel part of CRABS, we need to address the infrastructure of the algorithm and how it co-trains the barrier certificates along with the dynamics model.
-The first step of CRABS is to pretrain a soft-actor-critic model (https://arxiv.org/abs/1801.01290) until one is satisfied that the agent behaves safely.
+The first step of CRABS is to pretrain a soft-actor-critic policy, $$\pi_{init}$$ (https://arxiv.org/abs/1801.01290) until one is satisfied that the agent behaves safely.
 The second step is to safely explore. Exploration is performed by adding gaussian noise to the SAC agent and having it make actions. When any action leaves certified space, the agent falls back on a safeguard policy.
 Exploration has added new trajectories to our buffer of simulations, which allows us to recalibrate our dynamics model, $$\hat{T}$$ #todo put in pi and thats here. 
 Because the dynamics model has become more confident about our environment, it allows us to retrain the barrier certificate to expand the number of verified regions.
@@ -76,7 +76,5 @@ In the paper, the authors focused on low-dimensionality, high risk environments 
 The first environment we chose is called "Hover." It uses the double cartpole environment and rewards the agent when the tip of the second pole is halfway to its maximum height, while being unsafe if the first joint bends further than a strict threshold. 
 The second environment is called "zoom" where we set up the Mujoco Hopper environment to reward fast z-axis movement while the angle of the top stayed within a threshold. This did not incentivize dangerous behaviour as much as the Hover environment, however we wished to show that the algorithm could expand the barrier certificate and better learn dynamics of the system in this setup.
 
-References
-----------
 
 {% bibliography %}
