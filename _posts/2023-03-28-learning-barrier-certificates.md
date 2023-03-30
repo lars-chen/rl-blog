@@ -90,7 +90,6 @@ The second environment is called "zoom" where we set up the Mujoco Hopper enviro
 
 References
 -----------
-
 [^SuttonBarto2018]: Sutton, R. S., &amp; Barto, A. G. (2018). Reinforcement learning: An introduction. MIT Press Ltd. 
 
 [^GarciaFernandez2015]: Garcıa, J., & Fernández, F. (2015). A comprehensive survey on safe reinforcement learning. Journal of Machine Learning Research, 16(1), 1437-1480.
