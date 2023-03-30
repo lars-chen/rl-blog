@@ -81,9 +81,9 @@ Finally we re-optimize our policy while it is constrained by the barrier certifi
 In the paper, the authors focused on low-dimensionality, high risk environments based on Cartpole and Pendulum. They were able to consistently find that CRABS has zero training-time violations while performing admirably (and sometimes better than other well known algorithms) in terms of reward maximization. We chose to expand the environments in two cases: One where we increase the risk and one where we increase the complexity of the dynamics. 
 The first environment we chose is called "Hover." It uses the double cartpole environment and rewards the agent when the tip of the second pole is halfway to its maximum height, while being unsafe if the first joint bends further than a strict threshold. 
 
-<div style="width:60px ; height:60px">
+
 ![Pendulum](https://lars-chen.github.io/rl-blog/learning-barrier-certificates/assets/images/pendulum_examp.gif?raw=true) 
-<div>
+
 
 
 
