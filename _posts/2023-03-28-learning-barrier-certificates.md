@@ -97,9 +97,9 @@ In the paper, the authors focused on low-dimensionality, high risk environments 
 
 We chose to expand into two new Mujoco environments with two cases: One where we increase the risk and one where we increase the complexity of the dynamics. 
 
-Double Cartpole             |  Cartpole
+Double Cartpole             |  Hopper
 :-------------------------:|:-------------------------:
-![Pendulum](https://github.com/lars-chen/rl-blog/blob/master/assets/images/double_examp.gif?raw=true)    |  ![Cartpole](https://github.com/lars-chen/rl-blog/blob/master/assets/images/hopper_examp.gif?raw=true)
+![Pendulum](https://github.com/lars-chen/rl-blog/blob/master/assets/images/double_examp.gif?raw=true)    |  ![Hopper](https://github.com/lars-chen/rl-blog/blob/master/assets/images/hopper_examp.gif?raw=true)
 
 
 In the paper, the authors focused on low-dimensionality, high risk environments based on Cartpole and Pendulum. They were able to consistently find that CRABS has zero training-time violations while performing admirably (and sometimes better than other well known algorithms) in terms of reward maximization. We chose to expand the environments in two cases: One where we increase the risk and one where we increase the complexity of the dynamics. 
