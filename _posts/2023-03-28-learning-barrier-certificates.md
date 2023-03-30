@@ -12,6 +12,7 @@ date: 2023-03-28
 3. [barrier certificates](#what are barrier certificates?)
 4. [barrier certificates](#How do barrier certificates fit into the CRABS algorithm?)
 5. [environments](#Environments)
+6. [references](#References)
 
 
 ## abstract
@@ -106,7 +107,7 @@ We found that the environment reached a plateau of safety around 2000 steps. Whe
 
 
 References
------------
+
 [^SuttonBarto2018]: Sutton, R. S., &amp; Barto, A. G. (2018). Reinforcement learning: An introduction. MIT Press Ltd. 
 
 [^GarciaFernandez2015]: Garcıa, J., & Fernández, F. (2015). A comprehensive survey on safe reinforcement learning. Journal of Machine Learning Research, 16(1), 1437-1480.
