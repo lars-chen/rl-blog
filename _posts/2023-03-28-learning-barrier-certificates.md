@@ -86,12 +86,16 @@ The first environment we chose is called "Hover." It uses the double cartpole en
 <div>
 
 
-![Carpole](https://lars-chen.github.io/rl-blog/learning-barrier-certificates/assets/images/single_examp.gif?raw=true)
 
 
 The second environment is called "zoom" where we set up the Mujoco Hopper environment to reward fast z-axis movement while the angle of the top stayed within a threshold. This did not incentivize dangerous behaviour as much as the Hover environment, however we wished to show that the algorithm could expand the barrier certificate and better learn dynamics of the system in this setup.
 
+  
+  
+![Carpole](https://lars-chen.github.io/rl-blog/learning-barrier-certificates/assets/images/single_examp.gif?raw=true)
 
+  
+  
 References
 -----------
 
