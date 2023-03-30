@@ -13,7 +13,7 @@ Having a barrier function verify safe states is an often-used strategy to guaran
 
 ## introduction
 
-In reinforcement learning (RL), an agent is trained to navigate an environment and maximize its reward using a function crafted by a human investigator (Sutton and Barto, 1998)[^Sutton, Barto 2018]. The simplest classical algorithms maintain expectations of rewards in different states and update them after taking actions. Modern, more sophisticated versions of RL have even been shown to complete high-dimensional tasks in robotic simulation environments by Akkaya et al[^Akkaya2019]. In real world applications of RL, such as biomedical robotics, low reward areas could be states that hurt the patient or damage the agent itself. Safe RL is concerned with learning a high reward policy while either maintaining integrity of the agent or not violating external constraints. 
+In reinforcement learning (RL), an agent is trained to navigate an environment and maximize its reward using a function crafted by a human investigator (Sutton and Barto, 1998). [^Sutton Barto 2018] The simplest classical algorithms maintain expectations of rewards in different states and update them after taking actions. Modern, more sophisticated versions of RL have even been shown to complete high-dimensional tasks in robotic simulation environments by Akkaya et al[^Akkaya2019]. In real world applications of RL, such as biomedical robotics, low reward areas could be states that hurt the patient or damage the agent itself. Safe RL is concerned with learning a high reward policy while either maintaining integrity of the agent or not violating external constraints. 
 
 There are already many unique and diverse strategies to accomplish the goal of safety. In a review written in 2013, García and Fernández[^Garcia, Fernandez 2015] divided safe RL algorithms into two main genres: algorithms that modify the optimality criterion with a safety factor (like primal-dual problems which add penalty terms to the Lagrangian) and algorithms that modify the exploration behavior. Nearly ten years later many new sophisticated and inventive methods have been proposed, Gu et al.[^Gu2023] chose to make the main distinction between algorithms in whether they are model based or model free. 
 
@@ -80,7 +80,7 @@ The second environment is called "zoom" where we set up the Mujoco Hopper enviro
 References
 -----------
 
-[^Sutton, Barto 2018]: Sutton, R. S., &amp; Barto, A. G. (2018). Reinforcement learning: An introduction. MIT Press Ltd. 
+[^Sutton Barto 2018]: Sutton, R. S., &amp; Barto, A. G. (2018). Reinforcement learning: An introduction. MIT Press Ltd. 
 
 [^Garcia, Fernandez 2015]: Garcıa, J., & Fernández, F. (2015). A comprehensive survey on safe reinforcement learning. Journal of Machine Learning Research, 16(1), 1437-1480.
 
