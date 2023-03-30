@@ -3,6 +3,11 @@ title:  "learning barrier certificates"
 mathjax: true
 layout: post
 categories: media
+author:
+  - name: Lars Chen
+    affiliation: BCCN
+  - name: Jeremiah Flannery
+    affiliation: BCCN
 giscus_comments: true
 date: 2023-03-28
 ---
