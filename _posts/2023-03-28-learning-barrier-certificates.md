@@ -6,6 +6,12 @@ categories: media
 date: 2023-03-28
 ---
 
+### Table of Contents
+1. [abstract](#abstract)
+2. [introduction](#introduction)
+3. [barrier certificates](#what are barrier certificates)
+4. [environments](#Environments)
+
 
 ## abstract
 
@@ -75,8 +81,7 @@ Finally we re-optimize our policy while it is constrained by the barrier certifi
 In the paper, the authors focused on low-dimensionality, high risk environments based on Cartpole and Pendulum. They were able to consistently find that CRABS has zero training-time violations while performing admirably (and sometimes better than other well known algorithms) in terms of reward maximization. We chose to expand the environments in two cases: One where we increase the risk and one where we increase the complexity of the dynamics. 
 The first environment we chose is called "Hover." It uses the double cartpole environment and rewards the agent when the tip of the second pole is halfway to its maximum height, while being unsafe if the first joint bends further than a strict threshold. 
 
-![Pendulum](https://github.com/lars-chen/rl-blog/blob/2a3b0fc8c492f0db202d801a90146fee825169b0/assets/images/pendulum_examp.gif?raw=true)
-
+![Pendulum](https://lars-chen.github.io/rl-blog/learning-barrier-certificates/assets/images/pendulum_examp.gif?raw=true)
 
 The second environment is called "zoom" where we set up the Mujoco Hopper environment to reward fast z-axis movement while the angle of the top stayed within a threshold. This did not incentivize dangerous behaviour as much as the Hover environment, however we wished to show that the algorithm could expand the barrier certificate and better learn dynamics of the system in this setup.
 
