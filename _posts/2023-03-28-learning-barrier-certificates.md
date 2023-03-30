@@ -90,7 +90,7 @@ Finally we re-optimize our policy while it is constrained by the barrier certifi
 
 Swing             |  Cartpole
 :-------------------------:|:-------------------------:
-![Pendulum](https://github.com/lars-chen/rl-blog/blob/master/assets/images/pendulum_examp.gif?raw=true)   |  ![Cartpole](https://github.com/lars-chen/rl-blog/blob/master/assets/images/single_examp.gif?raw=true)
+![Pendulum](https://github.com/lars-chen/rl-blog/blob/master/assets/images/pendulum_examp.gif?raw=true)   |  ![Cartpole](https://github.com/lars-chen/rl-blog/blob/master/assets/images/safeinvpendulum_test.gif)
 
 
 In the paper, the authors focused on low-dimensionality, high risk environments based on Cartpole and Pendulum in the Gym-Mujoco[^TodorovErezTasa2012] simulation suite. They were able to consistently find that CRABS has zero training-time violations while performing admirably (and sometimes better than other well known algorithms) in terms of reward maximization. 
@@ -99,7 +99,7 @@ We chose to expand into two new Mujoco environments with two cases: One where we
 
 Double Cartpole             |  Hopper
 :-------------------------:|:-------------------------:
-![Pendulum](https://github.com/lars-chen/rl-blog/blob/master/assets/images/double_examp.gif?raw=true)    |  ![Hopper](https://github.com/lars-chen/rl-blog/blob/master/assets/images/hopper_examp.gif?raw=true)
+![Double](https://github.com/lars-chen/rl-blog/blob/master/assets/images/double_pendulum_71000%20.gif)    |  ![Hopper](https://github.com/lars-chen/rl-blog/blob/master/assets/images/hopper860pre.gif)
 
 
 In the paper, the authors focused on low-dimensionality, high risk environments based on Cartpole and Pendulum. They were able to consistently find that CRABS has zero training-time violations while performing admirably (and sometimes better than other well known algorithms) in terms of reward maximization. We chose to expand the environments in two cases: One where we increase the risk and one where we increase the complexity of the dynamics. 
@@ -112,12 +112,22 @@ The second environment is called "zoom" where we set up the Mujoco Hopper enviro
 ## Pre-training 
 In the methodology section we mentioned that this algorithm requires a pre-trained safe agent. The authors pre-trained with SAC for 10,000 steps and checked every following 1,000 steps whether the policy was safe, taking the first safe policy they found. Firt we verified their results on the cartpole environment.
 
-![Single Pendulum Pretrain Safety](https://github.com/lars-chen/rl-blog/blob/210451276974ed2351cf62c5539173460c46e18d/assets/graphs/single-pretrain-safety.png)
+![Single Pendulum Pretrain Safety](https://github.com/lars-chen/rl-blog/blob/master/assets/images/Single%20cartpole.png)
 
 We found that the environment reached a plateau of safety around 2000 steps. When we ran this on Hover and Zoom, more complex environments, we were surprised/not surprised to find that pre-training needed xxxxxxx
 
+![Hopper Pretrain Safety](https://github.com/lars-chen/rl-blog/blob/master/assets/images/hopper_pretraining.png)
+
+
 
 ## Results
+
+#### Double Pendulum
+
+
+Epoch 5                    |  Epoch 10                |  Epoch 15
+:-------------------------:|:-------------------------:|:-------------------------:
+![Double](https://github.com/lars-chen/rl-blog/blob/master/assets/images/double_train_5k.gif)   |  ![Double](https://github.com/lars-chen/rl-blog/blob/master/assets/images/double_train_10k.gif)   |  ![Double](https://github.com/lars-chen/rl-blog/blob/master/assets/images/double_train_15k.gif)
 
 {% include uncert_hopper_100.html %}
 
