@@ -95,7 +95,7 @@ The second environment is called "zoom" where we set up the Mujoco Hopper enviro
 ![Carpole](https://lars-chen.github.io/rl-blog/learning-barrier-certificates/assets/images/single_examp.gif?raw=true)
 
   
-  
+   
 References
 -----------
 
