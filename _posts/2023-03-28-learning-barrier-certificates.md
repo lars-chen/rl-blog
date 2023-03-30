@@ -3,6 +3,7 @@ title:  "learning barrier certificates"
 mathjax: true
 layout: post
 categories: media
+years: [1967, 1956]
 date: 2023-03-28
 ---
 
