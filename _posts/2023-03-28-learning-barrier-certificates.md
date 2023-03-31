@@ -137,11 +137,9 @@ In the methodology section we mentioned that this algorithm requires a pre-train
 We found that the environment reached a plateau of safety around 2000 steps. When we ran this on Hover and Zoom, more complex environments, we were surprised/not surprised to find that pre-training needed xxxxxxx
 
 
-Double Inverted Pendulum Pre-training         |  Hopper Pre-training
-:-------------------------:|:-------------------------:
-![Double](https://github.com/lars-chen/rl-blog/blob/master/assets/images/DoubleInvertedPretraining.png?raw=true)    |  ![Hopper](https://github.com/lars-chen/rl-blog/blob/master/assets/images/hopper_pretraining.png?raw=true)
+![Pre-training Safety Violations Per Episode](https://github.com/lars-chen/rl-blog/blob/master/assets/images/pre-training-safety.png?raw=true)
 
-> **Figure 3.** Pretraining 'Double Inverted Pendulum' and 'Hopper' pretraining with SAC.
+> **Figure 3.** Number of Pretraining Safety Violations in 'Double Inverted Pendulum' and 'Hopper' pretraining with SAC.
 
 
 ## Discussion
