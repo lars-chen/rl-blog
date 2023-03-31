@@ -99,8 +99,9 @@ The second step is to safely explore. Exploration is performed by adding gaussia
 Exploration has added new trajectories to our buffer of simulations, $$\hat{D}$$. This allows us to recalibrate our dynamics model, $$\hat{T}$$. $$\hat{T}$$ is paramaterized multiple neural networks, $$\omega$$, and updated by minimzing the negative log likelihood of the seqeunces in the replay buffer happening:
 
 $$
-\mathcal{L}_{$$\hat{T}$$} \omega = \mathbb{E}
+\underset{$$\hat{T}$$}\mathcal{L} \omega = \mathbb{E}
 $$
+
 Because the dynamics model has become more confident about our environment, it allows us to retrain the barrier certificate to expand the number of verified regions.
 Finally we re-optimize our policy $$\pi$$ while it is constrained by the barrier certificate. 
 
