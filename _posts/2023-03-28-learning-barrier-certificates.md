@@ -103,7 +103,7 @@ $$
 $$
 
 Because the dynamics model has become more confident about our environment, it allows us to retrain the barrier certificate to expand the number of verified regions.
-Finally we re-optimize our policy $$\pi$$ while it is constrained by the barrier certificate. 
+Finally we re-optimize our policy $$\pi$$ with a modified Soft-Actor-Critic implementation while it is constrained by the barrier certificate. We train to maximize against the worst case scenario $$s*$$ again, just like in the barrier section's min-max problem.
 
 
 ## Environments
