@@ -100,7 +100,7 @@ We chose to expand into two new Mujoco environments with two cases: One where we
 
 Double Cartpole             |  Hopper
 :-------------------------:|:-------------------------:
-<img src=https://github.com/lars-chen/rl-blog/blob/master/assets/images/double_pendulum_71000.gif  width="250" height="250" /> | <img src=https://github.com/lars-chen/rl-blog/blob/master/assets/images/hopper860pre.gif.gif  width="250" height="250" />
+<img src=https://github.com/lars-chen/rl-blog/blob/master/assets/images/double_pendulum_71000%20.gif  width="250" height="250" /> | <img src=https://github.com/lars-chen/rl-blog/blob/master/assets/images/hopper860pre.gif%20.gif  width="250" height="250" />
 
 
 In the paper, the authors focused on low-dimensionality, high risk environments based on Cartpole and Pendulum. They were able to consistently find that CRABS has zero training-time violations while performing admirably (and sometimes better than other well known algorithms) in terms of reward maximization. We chose to expand the environments in two cases: One where we increase the risk and one where we increase the complexity of the dynamics. 
@@ -128,7 +128,7 @@ We found that the environment reached a plateau of safety around 2000 steps. Whe
 
 Epoch 5                    |  Epoch 10                |  Epoch 15
 :-------------------------:|:-------------------------:|:-------------------------:
-<img src=https://github.com/lars-chen/rl-blog/blob/master/assets/images/double_train_5k.gif  width="250" height="250" />  |  <img src=https://github.com/lars-chen/rl-blog/blob/master/assets/images/double_train_10k.gif width="250" height="250" />   |  <img src=https://github.com/lars-chen/rl-blog/blob/master/assets/images/double_train_15k.gif width="250" height="250" /> 
+<img src=https://github.com/lars-chen/rl-blog/blob/master/assets/images/double_train_5k.gif  width="200" height="200" />  |  <img src=https://github.com/lars-chen/rl-blog/blob/master/assets/images/double_train_10k.gif width="200" height="200" />   |  <img src=https://github.com/lars-chen/rl-blog/blob/master/assets/images/double_train_15k.gif width="200" height="200" /> 
 
 
 
@@ -137,7 +137,7 @@ Epoch 5                    |  Epoch 10                |  Epoch 15
 
 Epoch 5                    |  Epoch 10                |  Epoch 15
 :-------------------------:|:-------------------------:|:-------------------------:
-<img src=https://github.com/lars-chen/rl-blog/blob/master/assets/images/hopper_0%20(online-video-cutter.com).gif  width="250" height="250" />  |  <img src=https://github.com/lars-chen/rl-blog/blob/master/assets/images/hopper_20%20(online-video-cutter.com).gif width="250" height="250" />   |  <img src=https://github.com/lars-chen/rl-blog/blob/master/assets/images/hopper_30%20(online-video-cutter.com).gif width="250" height="250" /> 
+<img src=https://github.com/lars-chen/rl-blog/blob/master/assets/images/hopper_0%20(online-video-cutter.com).gif  width="200" height="200" />  |  <img src=https://github.com/lars-chen/rl-blog/blob/master/assets/images/hopper_20%20(online-video-cutter.com).gif width="200" height="200" />   |  <img src=https://github.com/lars-chen/rl-blog/blob/master/assets/images/hopper_30%20(online-video-cutter.com).gif width="200" height="200" /> 
 
 {% include uncert_hopper_100.html %}
 
