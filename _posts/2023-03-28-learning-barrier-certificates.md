@@ -239,3 +239,4 @@ What can been seen over the 11 epochs that are visualized in **Figure 6.** is th
 [^Haarnoja2018]: Haarnoja, T., Zhou, A., Abbeel, P., Levine, S., 2012. Soft Actor-Critic: Off-Policy Maximum Entropy Deep Reinforcement Learning with a Stochastic Actor _arXiv.org_, p.01290. Available at: [https://arxiv.org/abs/1801.01290](https://arxiv.org/abs/1801.01290)
 
 [^TodorovErezTasa2012]: Todorov, E., and Erez, T., and Tassa, Y. 2012. MuJoCo: A physics engine for model-based control. In IEEE/RSJ International Conference on Intelligent Robots and Systems. Available at [https://github.com/deepmind/mujoco](https://github.com/deepmind/mujoco)
+ 
