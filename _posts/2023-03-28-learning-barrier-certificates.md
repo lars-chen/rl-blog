@@ -12,21 +12,23 @@ date: 2023-03-28
 *Lars Chen*, *Jeremiah Flannery*
 
 ## Table of Contents
-  * [Abstract](#abstract)
-  * [Introduction](#introduction)
-  * [What are barrier certificates?](#what-are-barrier-certificates-)
-  * [How do barrier certificates fit into the CRABS algorithm?](#how-do-barrier-certificates-fit-into-the-crabs-algorithm-)
-  * [Environments](#environments)
-  * [Pre-training](#pre-training)
-  * [Discussion](#discussion)
-      - [Double Pendulum with CRABS](#double-pendulum-with-crabs)
-      - [Hopper with CRABS](#hopper-with-crabs)
-  * [References](#references)
+  * [Abstract](#abs)
+  * [Introduction](#intro)
+  * [What are barrier certificates?](#bc)
+  * [How do barrier certificates fit into the CRABS algorithm?](#lbc)
+  * [Environments](#env)
+  * [Pre-training](#pre)
+  * [Discussion](#disc)
+      - [Double Pendulum with CRABS](#double)
+      - [Hopper with CRABS](#hopper)
+  * [References](#ref)
 
+<a name="abs"></a>
 ## Abstract
 
 Having a barrier function verify safe states is an often-used strategy to guarantee that one doesn’t incur training-time errors in Safe RL. Depending on how one sets up this barrier function, it can require effortful hand-tuning specific to any new environment.  Last year, Luo and Ma proposed a method that sidesteps this effort by co-learning three elements: 1) improving the confidence of the physics model, 2) increasing the size of verified regions, and 3) optimizing the policy. They posit that any of the three elements will incrementally improve after benefitting from improvements in the other two elements, creating a complimentary sequential structure. Instead of requiring a pre-made barrier function, their algorithm now requires an initial safe policy as a starting point. They showed in simulations with low dimensional environments that their algorithm was capable of expanding the safe region while incurring no training errors. We introduced the algorithm into two environments with higher dimensionality: double inverted pendulum and hopper, and we performed an analysis on the safety of pre-trained agents in the two environments. We found that pretraining achieved safety in less steps than expected, but the behavior of the agent when training the barrier certificates did not arrive to a safe behavior in the number of epochs we were able to train. 
 
+<a name="intro"></a>
 ## Introduction
 
 In reinforcement learning (RL), an agent is trained to navigate an environment and maximize its reward using a function crafted by a human investigator (Sutton and Barto, 2018). [^SuttonBarto2018] The simplest classical algorithms maintain expectations of rewards in different states and update them after taking actions. For example, an instantiation of Temporal Difference Learning (Sutton, 1988)[^Sutton1988] maintains a table of expected values $$V$$ for states $$s \in S$$ and actions taken with policy $$\pi$$. It updates a state’s expectation with the difference between the previous expectation and the current reward, as well as a discounted (multiplied by a $$\gamma < 1$$) future reward term. 
@@ -53,7 +55,7 @@ Some “teacher” algorithms take human input to guide the agent to learn faste
 Foundational to our paper are approaches which fit Lyapunov functions with a dynamics model to approximate a barrier around safe states.[^Chow2018] Guaranteeing Lyapunov stability in the broader sense guarantees that states near an equilibrium point stay there forever, which translates easily to reinforcement learning. This model, however needs a pre-calibrated dynamics model, something CRABS circumvents. A similar barrier idea is used by other papers which guarantee all visited states are “reversible” – meaning the agent is known to be safe if it can travel back to other safe areas [^Molodovan2012]. Does learning about other barrier methods make you curious about CRABS' barrier function? We hope so. Let's dive into details. 
 
 
-
+<a name="bc"></a>
 ## What are barrier certificates?
 
 The name of a barrier certificate gives most readers a good idea of the goal it wishes to accomplish: having a function that tells us whether a state lands within a boundary. But what is the boundary in question and how does the barrier certificate guarantee that? To begin, we don't just want to find states that are safe, but also states which *never* will encounter unsafe states. States that meet this strict criterion are called valid. The barrier certificate  $$h: S \rightarrow \mathbb{R}$$, maps the state space to real numbers, with the below property: 
@@ -92,6 +94,7 @@ $$
 
 Where the term $$\underset{\phi}{C*}$$ is derived from $$C_{h}$$ being the set of all valid states.
 
+<a name="lbc"></a>
 ## How do barrier certificates fit into the CRABS algorithm?
 
 Now that we have covered the novel part of CRABS, we need to address the infrastructure of the algorithm and how it co-trains the barrier certificates along with the dynamics model.
@@ -108,7 +111,7 @@ Because the dynamics model has become more confident about our environment, it a
 
 Finally we re-optimize our policy $$\pi$$ with a modified Soft-Actor-Critic implementation while it is constrained by the barrier certificate. We train to maximize against the worst case scenario $$s*$$ again, just like in the barrier section's min-max problem.
 
-
+<a name="env"></a>
 ## Environments
 
 Pendulum             |  Cartpole
@@ -134,6 +137,7 @@ The first environment we chose is called "Hover." It uses the double cartpole en
 
 The second environment is called "zoom" where we set up the Mujoco Hopper environment to reward fast z-axis movement while the angle of the top stayed within a threshold. This did not incentivize dangerous behaviour as much as the Hover environment, however we wished to show that the algorithm could expand the barrier certificate and better learn dynamics of the system in this setup.
 
+<a name="pre"></a>
 ## Pre-training 
 In the methodology section we mentioned that this algorithm requires a pre-trained safe agent. The authors pre-trained with SAC for 10,000 steps and checked every following 1,000 steps whether the policy was safe, taking the first safe policy they found. Firt we verified their results on the cartpole environment.
 
@@ -144,7 +148,7 @@ We found that the environment reached a plateau of safety around 2000 steps. Whe
 
 > **Figure 3.** Number of Pretraining Safety Violations in 'Double Inverted Pendulum' and 'Hopper' pretraining with SAC.
 
-
+<a name="disc"></a>
 ## Discussion
 
 In the Open Review discussion of the CRABS paper, the main criticism was that the dimensionalities of the environements investigated were too low. Our project aimed to adapt CRABS to work in the environments Double Inverted Pendulum and Hopper, which increased the dimensionality of the observation and action space significantly.
@@ -165,7 +169,7 @@ In the scope of this class project, we were able to successfully pre-train these
 There were a battery of tests that we could still try in the future, given more time: various hyperparameters to tweak, reward functions to play around with as well as restricting the safety conditions to a more stable domain. For example, we found that restricting the angle of the first pendulum in double-pendulum resulted in slightly better learning, and our next step was to go further and restrict the second pendulum. Therefore, we cannot definitively state that the CRABS algorithm works or does not work on higher dimensional environments. Given the qualitative results below, we do have hope that CRABS can work in Double Inverted Pendulum, since though it has a high observation space, its action space is still low.
 
 
-
+<a name="double"></a>
 #### Double Pendulum with CRABS
 
 The CRABS algorithm we implemented rewarded the Double Inverted Pendulum for being in a more unsafe state, namely if the tip of the second pole was halfway to its maximum height such that bottom pole is straight and the top pole is bent at 90° angle.
@@ -180,6 +184,7 @@ Epoch 5                    |  Epoch 10                |  Epoch 15
 
 What we see in **Figure 4.** may be that it is attempting to learn this area of maximum reward. However, instead of learning the threshold where it is safe to bend its poles, in some trajectories the agent begins spinning the top pole (which is a desired result) but can’t help but fly off the track or bending the first pole further than our safety bound (undesired).
 
+<a name="hopper"></a>
 #### Hopper with CRABS
 
 Epoch 5                    |  Epoch 10                |  Epoch 15
@@ -199,7 +204,7 @@ To better to understand what was happening in the CRABS learning process in a hi
 What can been seen over the 11 epochs that are visualized in **Figure 6.** is that the the dynamics model had some variance across the grid at epoch 0 and as training progresses the uncertainty of of the ensemble model becomes very low in the angle space that the agent stays in and loses certainty in the states that do not get explored anymore. Hence, we see that the dynamics model is likely working and that the difficulties learning may lie elsewhere than the model. 
 
 
-
+<a name="ref"></a>
 #### References
 ----------------
 
