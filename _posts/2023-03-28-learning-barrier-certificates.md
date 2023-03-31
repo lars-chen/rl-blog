@@ -163,7 +163,10 @@ Cartpole               								       |         4                               
 > **Table 1.** Hopper and Double Inverted Pendulum increased the dimension of the observation space by 11 and the action space by 2.
 
 
-In the scope of this class project, we were able to successfully pre-train these new environments with SAC, both acheiving a high reward policies that were certified safe initial policies. 
+In the scope of this class project, we were able to successfully pre-train these new environments with SAC, both acheiving policies with high rewards that were certified safe initial policies. Unfortunately, however, right around the time we were able to run the algorithm, error-free, on both of the high dimensional environments for the first time we were met with the project deadline for the class. Our first few attempts in both Double Inverted Pendulum and Hopper un-learned the safe initial policy and returned highly negative mean rewards after a few epochs and clearly behave unsafely as shown below. 
+
+There were a battery tests that we could still try in the future, given more time: various hyperparameter to tweak, reward functions to play around with as well as restricting the safety conditions to a more stable domain. Therefore, we cannot definitively state that the CRABS algorithm works or does not work on higher dimensional environments. Given the qualitative results below, we do have hope that CRABS can work in Double Inverted Pendulum, since though it has a high observation space, its action space is still low.
+
 
 #### Double Pendulum with CRABS
 
