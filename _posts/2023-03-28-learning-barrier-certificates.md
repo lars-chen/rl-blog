@@ -120,7 +120,7 @@ Pendulum             |  Cartpole
 :-------------------------:|:-------------------------:
 ![Swing](https://github.com/lars-chen/rl-blog/blob/master/assets/images/pendulum_examp.gif?raw=true)    |  ![Cartpole](https://github.com/lars-chen/rl-blog/blob/master/assets/images/single_examp.gif?raw=true)
 
-> **Figure 1.** The paper tested the CRABS algorithm on the classic 'swing up' pendulum and 'cartpole' gym/mujoco environments. The swing GIF is taken from ![Pendulum Gym](https://www.gymlibrary.dev/environments/classic_control/pendulum/) documentation. Cartpole GIF was our generated during our verification process of the CRABS algorithm.
+> **Figure 1.** The paper tested the CRABS algorithm on the classic 'swing up' pendulum and 'cartpole' gym/mujoco environments. The swing GIF is taken from [Pendulum Gym](https://www.gymlibrary.dev/environments/classic_control/pendulum/) documentation. Cartpole GIF was our generated during our verification process of the CRABS algorithm.
 
 
 In the paper, the authors focused on low-dimensionality, high risk environments based on Cartpole and Pendulum in the Gym-Mujoco[^TodorovErezTasa2012] simulation suite. They were able to consistently find that CRABS has zero training-time violations while performing admirably (and sometimes better than other well known algorithms) in terms of reward maximization. 
@@ -131,7 +131,7 @@ Double Inverted Pendulum         |  Hopper
 :-------------------------:|:-------------------------:
 ![Double](https://github.com/lars-chen/rl-blog/blob/master/assets/images/double_pendulum_71000%20.gif?raw=true)    |  ![Hopper](https://github.com/lars-chen/rl-blog/blob/master/assets/images/hopper860pre.gif?raw=true)
 
-> **Figure 2.** Our project aimed to extend the code to work on ![double inverted pendulum](https://www.gymlibrary.dev/environments/mujoco/inverted_double_pendulum/) and ![hopper](https://www.gymlibrary.dev/environments/mujoco/hopper/). This table shows the double inverted pendulum and hopper agents pre-trained successfully SAC, before the CRABS algorithm was applied. 
+> **Figure 2.** Our project aimed to extend the code to work on [double inverted pendulum](https://www.gymlibrary.dev/environments/mujoco/inverted_double_pendulum/) and [hopper](https://www.gymlibrary.dev/environments/mujoco/hopper/). This table shows the double inverted pendulum and hopper agents pre-trained successfully SAC, before the CRABS algorithm was applied. 
 
 In the paper, the authors focused on low-dimensionality, high risk environments based on Cartpole and Pendulum. They were able to consistently find that CRABS has zero training-time violations while performing admirably (and sometimes better than other well known algorithms) in terms of reward maximization. We chose to expand the environments in two cases: One where we increase the risk and one where we increase the complexity of the dynamics. 
 
@@ -160,7 +160,7 @@ Mujoco Gym Environment      |  Observation Dimension    | Action Dimension
 :-------------------------:|:-------------------------:|:-------------------------:
 Pendulum                  						   		 |         3                                   |     1
 Cartpole               								       |         4                                   |     1
-<span style="color:green"> *Double Inverted Pendulum*  </span>           | <span style="color:green">*11*</span>         |     3
+<span style="color:green"> *Double Inverted Pendulum*  </span>           | <span style="color:green">*11*</span>         |     1
 <span style="color:green"> *Hopper*                    </span>           | <span style="color:green">*11*</span>         | <span style="color:green">*3*</span>
 
 
