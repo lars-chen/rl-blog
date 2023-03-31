@@ -4,9 +4,8 @@ permalink: "/about/"
 layout: page
 ---
 
-## About
 
-This blog post is in reference to the code in [github.com/flanneryjn/CRABS_RL](https://github.com/flanneryjn/CRABS_RL) which has been modified by Jeremiah Flannery and Lars Chen.
+This blog post is in reference to the code in [https://github.com/flanneryjn/CRABS_RL](https://github.com/flanneryjn/CRABS_RL) which has been modified by Jeremiah Flannery and Lars Chen.
 
 ## Based on
 
