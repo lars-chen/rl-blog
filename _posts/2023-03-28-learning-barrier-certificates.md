@@ -10,7 +10,9 @@ date: 2023-03-28
 
 Authors: *Lars Chen*, *Jeremiah Flannery*
 
-## Table of Contents
+<details>
+ <summary> ## Table of Contents </summary> 
+
 
   * [Abstract](#abstract)
   * [Introduction](#introduction)
@@ -23,6 +25,7 @@ Authors: *Lars Chen*, *Jeremiah Flannery*
       - [Hopper with CRABS](#hopper-with-crabs)
   * [References](#references)
 
+ </details>
 
 ## Abstract
 
