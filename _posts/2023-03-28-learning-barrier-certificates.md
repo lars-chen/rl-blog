@@ -10,10 +10,7 @@ date: 2023-03-28
 
 Authors: *Lars Chen*, *Jeremiah Flannery*
 
-<details>
- <summary> ## Table of Contents </summary> 
-
-
+## Table of Contents
   * [Abstract](#abstract)
   * [Introduction](#introduction)
   * [What are barrier certificates?](#what-are-barrier-certificates)
@@ -24,8 +21,6 @@ Authors: *Lars Chen*, *Jeremiah Flannery*
       - [Double Pendulum with CRABS](#double-pendulum-with-crabs)
       - [Hopper with CRABS](#hopper-with-crabs)
   * [References](#references)
-
- </details>
 
 ## Abstract
 
