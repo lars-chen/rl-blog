@@ -137,7 +137,7 @@ Epoch 5                    |  Epoch 10                |  Epoch 15
 
 Epoch 5                    |  Epoch 10                |  Epoch 15
 :-------------------------:|:-------------------------:|:-------------------------:
-<img src=https://github.com/lars-chen/rl-blog/blob/master/assets/images/hopper_0%20(online-video-cutter.com).gif  width="200" height="200" />  |  <img src=https://github.com/lars-chen/rl-blog/blob/master/assets/images/hopper_20%20(online-video-cutter.com).gif width="200" height="200" />   |  <img src=https://github.com/lars-chen/rl-blog/blob/master/assets/images/hopper_30%20(online-video-cutter.com).gif width="200" height="200" /> 
+<img src=https://github.com/lars-chen/rl-blog/blob/master/assets/images/hopper_0.gif  width="200" height="200" />  |  <img src=https://github.com/lars-chen/rl-blog/blob/master/assets/images/hopper_20%20(online-video-cutter.com).gif width="200" height="200" />   |  <img src=https://github.com/lars-chen/rl-blog/blob/master/assets/images/hopper_30%20(online-video-cutter.com).gif width="200" height="200" /> 
 
 {% include uncert_hopper_100.html %}
 
