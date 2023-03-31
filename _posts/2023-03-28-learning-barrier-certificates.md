@@ -13,17 +13,17 @@ date: 2023-03-28
 ---
 
 ### Table of Contents
-1. [abstract](#abstract)
-2. [introduction](#introduction)
-3. [what are barrier certificates?](#what-are-barrier-certificates)
-4. [learning barrier certificates](#How-do-barrier-certificates-fit-into-the-CRABS-algorithm)
-5. [pre-training](#Pre-training)
-6. [environments](#Environments)
-7. [results](#Results)
-8. [references](#References)
+1. [Abstract](#Abstract)
+2. [Introduction](#Introduction)
+3. [What are barrier certificates?](#What-are-barrier-certificates)
+4. [Learning barrier certificates](#How-do-barrier-certificates-fit-into-the-CRABS-algorithm)
+5. [Pre-training](#Pre-training)
+6. [Environments](#Environments)
+7. [Results](#Results)
+8. [References](#References)
 
 
-## abstract
+## Abstract
 
 Having a barrier function verify safe states is an often-used strategy to guarantee that one doesn’t incur training-time errors in Safe RL. Depending on how one sets up this barrier function, it can require effortful hand-tuning specific to any new environment.  Last year, Luo and Ma proposed a method that sidesteps this effort by co-learning three elements: 1) improving the confidence of the physics model, 2) increasing the size of verified regions, and 3) optimizing the policy. They posit that any of the three elements will incrementally improve after benefitting from improvements in the other two elements, creating a complimentary sequential structure. Instead of requiring a pre-made barrier function, their algorithm now requires an initial safe policy as a starting point. They showed in simulations with low dimensional environments that their algorithm was capable of expanding the safe region while incurring no training errors. We introduced the algorithm into two environments with higher dimensionality: double-cartpole and hopper, and we performed an analysis on the safety of pre-trained agents in the two environments. We found that pretraining achieved safety in less steps than expected, but the behavior of the agent when training the barrier certificates did not arrive to a safe behavior in the number of epochs we were able to train. 
 
@@ -49,13 +49,11 @@ CRABS falls firmly into being model-based and modifying exploration behavior. Be
 
 Some “teacher” algorithms take human input to guide the agent to learn faster and avoid bad states [^Zimmer2014]. Other classes of algorithm modify the exploration behavior by first learning from batches of existing data[^Le2019] or by training beforehand in a sandbox environment where healthy errors can be made before training in the “real” environment where fatal errors would occur.[^Zhang2020] CRABS needing a pre-trained safe policy in some ways parallels this approach. Depending on the researcher, these methods may or may not incorporate a dynamics model. 
 
-Foundational to our paper are approaches which fit Lyapunov functions with a dynamics model to approximate a barrier around safe states.[^Chow2018] Guaranteeing Lyapunov stability in the broader sense guarantees that states near an equilibrium point stay there forever, which translates easily to reinforcement learning. A similar idea is used by other papers which want to guarantee that all visited states are “reversible” – meaning the agent is known to be safe if it can travel back to other safe areas [^Molodovan2012]. 
+Foundational to our paper are approaches which fit Lyapunov functions with a dynamics model to approximate a barrier around safe states.[^Chow2018] Guaranteeing Lyapunov stability in the broader sense guarantees that states near an equilibrium point stay there forever, which translates easily to reinforcement learning. This model, however needs a pre-calibrated dynamics model, something CRABS circumvents. A similar barrier idea is used by other papers which guarantee all visited states are “reversible” – meaning the agent is known to be safe if it can travel back to other safe areas [^Molodovan2012]. Does learning about other barrier methods make you curious about CRABS' barrier function? We hope so. Let's dive into details. 
 
 
 
-
-
-## what are barrier certificates?
+## What are barrier certificates?
 
 The name of a barrier certificate gives most readers a good idea of the goal it wishes to accomplish: having a function that tells us whether a state lands within a boundary. But what is the boundary in question and how does the barrier certificate guarantee that? To begin, we don't just want to find states that are safe, but also states which *never* will encounter unsafe states. States that meet this strict criterion are called valid. The barrier certificate  $$h: S \rightarrow \mathbb{R}$$, maps the state space to real numbers, with the below property: 
 
