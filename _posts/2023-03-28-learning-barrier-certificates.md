@@ -90,7 +90,7 @@ Finally we re-optimize our policy while it is constrained by the barrier certifi
 
 Swing             |  Cartpole
 :-------------------------:|:-------------------------:
-<img src=https://github.com/lars-chen/rl-blog/blob/master/assets/images/pendulum_examp.gif  width="250" height="250" /> | <img src=https://github.com/lars-chen/rl-blog/blob/master/assets/images/safeinvpendulum_test.gif  width="250" height="250" />
+![Swing](https://github.com/lars-chen/rl-blog/blob/master/assets/images/pendululm_examp.gif)    |  ![Cartpole](https://github.com/lars-chen/rl-blog/blob/master/assets/images/single_examp.gif)
 
 
 
@@ -100,7 +100,7 @@ We chose to expand into two new Mujoco environments with two cases: One where we
 
 Double Cartpole             |  Hopper
 :-------------------------:|:-------------------------:
-<img src=https://github.com/lars-chen/rl-blog/blob/master/assets/images/double_pendulum_71000%20.gif  width="250" height="250" /> | <img src=https://github.com/lars-chen/rl-blog/blob/master/assets/images/hopper860pre.gif%20.gif  width="250" height="250" />
+![Double](https://github.com/lars-chen/rl-blog/blob/master/assets/images/double_pendulum_71000.gif)    |  ![Hopper](https://github.com/lars-chen/rl-blog/blob/master/assets/images/hopper860pre.gif)
 
 
 In the paper, the authors focused on low-dimensionality, high risk environments based on Cartpole and Pendulum. They were able to consistently find that CRABS has zero training-time violations while performing admirably (and sometimes better than other well known algorithms) in terms of reward maximization. We chose to expand the environments in two cases: One where we increase the risk and one where we increase the complexity of the dynamics. 
