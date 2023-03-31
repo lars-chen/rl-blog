@@ -29,8 +29,11 @@ Having a barrier function verify safe states is an often-used strategy to guaran
 
 ## Introduction
 
-In reinforcement learning (RL), an agent is trained to navigate an environment and maximize its reward using a function crafted by a human investigator (Sutton and Barto, 2018). [^SuttonBarto2018] The simplest classical algorithms maintain expectations of rewards in different states and update them after taking actions. For example, an instantiation of Temporal Difference Learning (Sutton, 1988)[^Sutton1988] maintains a table of expected values (V) for states (s in S) and actions taken with policy (pi). It updates a state’s expectation with the difference between the previous expectation and the current reward, as well as a discounted future reward term. 
-Formula 
+In reinforcement learning (RL), an agent is trained to navigate an environment and maximize its reward using a function crafted by a human investigator (Sutton and Barto, 2018). [^SuttonBarto2018] The simplest classical algorithms maintain expectations of rewards in different states and update them after taking actions. For example, an instantiation of Temporal Difference Learning (Sutton, 1988)[^Sutton1988] maintains a table of expected values $$V$$ for states $$s \in S$$ and actions taken with policy $$\pi$$. It updates a state’s expectation with the difference between the previous expectation and the current reward, as well as a discounted (multiplied by a $$\gamma < 1$$) future reward term. 
+
+$$
+\Delta V(s) = \alpha (r + \gamma V(s') - V(s)) 
+$$
 
 Modern, more sophisticated versions of RL have been shown to complete high-dimensional tasks in a variety of environments, including robotic simulation [^Akkaya2019]. In real world applications of RL, such as biomedical robotics, low reward areas could be states that hurt the patient or damage the agent itself. One can imagine how in TD Learning one must visit several unsafe states and thus incur unwanted consequences. Safe RL tries to learn a high reward policy while either maintaining integrity of the agent or not violating external constraints.
 
