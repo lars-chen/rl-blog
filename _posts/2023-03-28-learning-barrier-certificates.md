@@ -160,7 +160,7 @@ Mujoco Gym Environment      |  Observation Dimension    | Action Dimension
 :-------------------------:|:-------------------------:|:-------------------------:
 Pendulum                  						   		 |         3                                   |     1
 Cartpole               								       |         4                                   |     1
-<span style="color:green"> *Double Inverted Pendulum*  </span>           | <span style="color:green">*11*</span>         |     1
+<span style="color:green"> *Double Inverted Pendulum*  </span>           | <span style="color:green">*11*</span>         |     3
 <span style="color:green"> *Hopper*                    </span>           | <span style="color:green">*11*</span>         | <span style="color:green">*3*</span>
 
 
