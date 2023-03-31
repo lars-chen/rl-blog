@@ -13,23 +13,21 @@ date: 2023-03-28
 ---
 
 ### Table of Contents
-1. [abstract](#Abstract)
-2. [introduction](#Introduction)
-3. [what are barrier certificates?](#What-are-Barrier-Certificates?)
-4. [learning barrier certificates](#How-do-barrier-certificates-fit-into-the-CRABS-algorithm?)
+1. [abstract](#abstract)
+2. [introduction](#introduction)
+3. [barrier certificates](#what are barrier certificates?)
+4. [barrier certificates](#How do barrier certificates fit into the CRABS algorithm?)
 5. [environments](#Environments)
-6. [pre-training ](#Pre-training )
-7. [results](#Results)
-8. [references](#References)
+6. [references](#References)
 
 
-## Abstract
+## abstract
 
 Having a barrier function verify safe states is an often-used strategy to guarantee that one doesn’t incur training-time errors in Safe RL. Depending on how one sets up this barrier function, it can require effortful hand-tuning specific to any new environment.  Last year, Luo and Ma proposed a method that sidesteps this effort by co-learning three elements: 1) improving the confidence of the physics model, 2) increasing the size of verified regions, and 3) optimizing the policy. They posit that any of the three elements will incrementally improve after benefitting from improvements in the other two elements, creating a complimentary sequential structure. Instead of requiring a pre-made barrier function, their algorithm now requires an initial safe policy as a starting point. They showed in simulations with low dimensional environments that their algorithm was capable of expanding the safe region while incurring no training errors. We introduced the algorithm into two environments with higher dimensionality: double-cartpole and hopper, and we performed an analysis on the safety of pre-trained agents in the two environments. We found that pretraining achieved safety in less steps than expected, but the behavior of the agent when training the barrier certificates did not arrive to a safe behavior in the number of epochs we were able to train. 
 
 ## Introduction
 
-In reinforcement learning (RL), an agent is trained to navigate an environment and maximize its reward using a function crafted by a human investigator (Sutton and Barto, 1998). [^SuttonBarto2018] The simplest classical algorithms maintain expectations of rewards in different states and update them after taking actions. For example, an instantiation of Temporal Difference Learning maintains a table of expected values (V) for states (s in S) and actions taken with policy (pi). It updates a state’s expectation with the difference between the previous expectation and the current reward, as well as a discounted future reward term. 
+In reinforcement learning (RL), an agent is trained to navigate an environment and maximize its reward using a function crafted by a human investigator (Sutton and Barto, 2018). [^SuttonBarto2018] The simplest classical algorithms maintain expectations of rewards in different states and update them after taking actions. For example, an instantiation of Temporal Difference Learning (Sutton, 1988)[^Sutton1988] maintains a table of expected values (V) for states (s in S) and actions taken with policy (pi). It updates a state’s expectation with the difference between the previous expectation and the current reward, as well as a discounted future reward term. 
 Formula 
 
 Modern, more sophisticated versions of RL have been shown to complete high-dimensional tasks in a variety of environments, including robotic simulation [^Akkaya2019]. In real world applications of RL, such as biomedical robotics, low reward areas could be states that hurt the patient or damage the agent itself. One can imagine how in TD Learning one must visit several unsafe states and thus incur unwanted consequences. Safe RL tries to learn a high reward policy while either maintaining integrity of the agent or not violating external constraints.
@@ -49,7 +47,7 @@ Foundational to our paper are approaches which fit Lyapunov functions with a dyn
 
 
 
-## What are Barrier Certificates?
+## what are barrier certificates?
 
 The name of a barrier certificate gives most readers a good idea of the goal it wishes to accomplish: having a function that tells us whether a state lands within a boundary. But what is the boundary in question and how does the barrier certificate guarantee that? To begin, we don't just want to find states that are safe, but also states which *never* will encounter unsafe states. States that meet this strict criterion are called valid. The barrier certificate  $$h: S \rightarrow \mathbb{R}$$, maps the state space to real numbers, with the below property: 
 
@@ -163,13 +161,15 @@ Epoch 5                    |  Epoch 10                |  Epoch 15
 
 {% include uncert_hopper_100.html %}
 
-> **Figure 7.** Grid of states applied to the ensemble of dynamics models trained with CRABS in the Hopper environment. 
+> **Figure 7.** Grid of states applied to the ensemble dynamics trained with CRABS in the Hopper environment. 
 
 ---------------
 #### References
 ----------------
 
 [^SuttonBarto2018]: Sutton, R. S., &amp; Barto, A. G. (2018). Reinforcement learning: An introduction. MIT Press Ltd. 
+
+[^Sutton1988]: Sutton, R. S. (1988). Learning to Predict by the Methods of Temporal Differences. Machine Learning, 3, 9-44. 
 
 [^GarciaFernandez2015]: Garcıa, J., & Fernández, F. (2015). A comprehensive survey on safe reinforcement learning. Journal of Machine Learning Research, 16(1), 1437-1480.
 
