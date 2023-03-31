@@ -106,7 +106,7 @@ The second step is to safely explore. Exploration is performed by adding gaussia
 Exploration has added new trajectories to our buffer of simulations, $$\hat{D}$$. This allows us to recalibrate our dynamics model, $$\hat{T}$$. $$\hat{T}$$ is paramaterized multiple neural networks, $$\omega$$, and updated by minimzing the negative log likelihood of the seqeunces in the replay buffer happening:
 
 $$
-\mathcal{L}_{\hat{T}}(\omega) = -\mathcal{E}_{(s, a, s')\in\hat{D}}[ \-log f_{\omega}(s'|s,a)] \
+\mathcal{L}_{\hat{T}}(\omega) = -\mathcal{E}_{(s, a, s')\in\hat{D}}( \-log f_{\omega}(s'|s,a))
 $$
 
 Because the dynamics model has become more confident about our environment, it allows us to retrain the barrier certificate to expand the number of verified regions.
@@ -154,6 +154,7 @@ We found that the environment reached a plateau of safety around 2000 steps. Whe
 ## Discussion
 
 In the Open Review discussion of the CRABS paper, the main criticism was that the dimensionalities of the environements investigated were too low. Our project aimed to adapt CRABS to work in the environments Double Inverted Pendulum and Hopper, which increased the dimensionality of the observation and action space significantly.
+
 
 Mujoco Gym Environment      |  Observation Dimension    | Action Dimension
 :-------------------------:|:-------------------------:|:-------------------------:
