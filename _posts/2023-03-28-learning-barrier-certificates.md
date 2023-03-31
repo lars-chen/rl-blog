@@ -1,13 +1,9 @@
 ---
-title:  "learning barrier certificates"
+title:  "Learning Barrier Certificates"
 mathjax: true
 layout: post
 categories: media
-author:
-  - name: Lars Chen
-    affiliation: BCCN
-  - name: Jeremiah Flannery
-    affiliation: BCCN
+author: Lars Chen, Jeremiah Flannery
 giscus_comments: true
 date: 2023-03-28
 ---
@@ -185,7 +181,7 @@ Epoch 5                    |  Epoch 10                |  Epoch 15
 
 > **Figure 5.** CRABS agent visualized in Hopper over the first few training epochs. 
 
-
+In the behavior of the hopper, we can see that it has slowed down to almost not move. We believe this is because noise is added in the probabilistic policy development, too many moves that attempt jumping are taking it outside of its safe zone, and it gets stuck in a state where it hasn’t yet found a safe way to get into a jumping animation. 
 
 {% include uncert_hopper_100.html %}
 
