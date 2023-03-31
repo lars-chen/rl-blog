@@ -19,7 +19,7 @@ date: 2023-03-28
 4. [Learning barrier certificates](#How-do-barrier-certificates-fit-into-the-CRABS-algorithm)
 5. [Pre-training](#Pre-training)
 6. [Environments](#Environments)
-7. [Results](#Results)
+7. [Discussion](#Discussion)
 8. [References](#References)
 
 
@@ -143,7 +143,7 @@ We found that the environment reached a plateau of safety around 2000 steps. Whe
 
 
 
-## Results
+## Discussion
 
 In the Open Review discussion of the CRABS paper, the main criticism was that the dimensionalities of the environements investigated were too low. Our project aimed to adapt CRABS to work in the environments Double Inverted Pendulum and Hopper, which increased the dimensionality of the observation and action space significantly.
 
@@ -152,8 +152,8 @@ Mujoco Gym Environment      |  Observation Dimension    | Action Dimension
 :-------------------------:|:-------------------------:|:-------------------------:
 Pendulum                  						   		 |         3                                   |     1
 Cartpole               								       |         4                                   |     1
-<span style="color:green"> *Double Inverted Pendulum*  </span>           | <span style="color:green">11</span>         |     1
-<span style="color:green"> *Hopper*                    </span>           | <span style="color:green">11</span>         | <span style="color:green">3</span>
+<span style="color:green"> *Double Inverted Pendulum*  </span>           | <span style="color:green">*11*</span>         |     1
+<span style="color:green"> *Hopper*                    </span>           | <span style="color:green">*11*</span>         | <span style="color:green">*3*</span>
 
 </center>
 
