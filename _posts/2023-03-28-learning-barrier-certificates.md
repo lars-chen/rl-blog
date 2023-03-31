@@ -145,6 +145,22 @@ We found that the environment reached a plateau of safety around 2000 steps. Whe
 
 ## Results
 
+In the Open Review discussion of the CRABS paper, the main criticism was that the dimensionalities of the environements investigated were too low. Our project aimed to adapt CRABS to work in the environments Double Inverted Pendulum and Hopper, which increased the dimensionality of the observation and action space significantly.
+
+
+Mujoco Gym Environment      |  Observation Dimension    | Action Dimension
+:-------------------------:|:-------------------------:|:-------------------------:
+Pendulum                  						   		 |         3                                   |     1
+Cartpole               								       |         4                                   |     1
+<span style="color:green"> *Double Inverted Pendulum*  </span>           | <span style="color:green">11</span>         |     1
+<span style="color:green"> *Hopper*                    </span>           | <span style="color:green">11</span>         | <span style="color:green">3</span>
+
+
+> **Table 1.** Hopper and Double Inverted Pendulum increased the dimension of the observation space by 11 and the action space by 2.
+
+
+In the scope of this class project, we were able to successfully pre-train these new environments with SAC, both acheiving a high reward policies that were certified safe initial policies. 
+
 #### Double Pendulum with CRABS
 
 
