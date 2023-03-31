@@ -9,7 +9,7 @@ date: 2023-03-28
 ---
 
 ## Authors: 
-*Lars Chen*, *Jeremiah Flannery*
+*Lars Chen*,  *Jeremiah Flannery*
 
 ## Table of Contents
   * [Abstract](#abs)
