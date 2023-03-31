@@ -15,8 +15,8 @@ date: 2023-03-28
 ### Table of Contents
 1. [abstract](#abstract)
 2. [introduction](#introduction)
-3. [what are barrier certificates?](#what-are-barrier-certificates?)
-4. [learning barrier certificates](#How-do-barrier-certificates-fit-into-the-CRABS-algorithm?)
+3. [what are barrier certificates?](#what-are-barrier-certificates)
+4. [learning barrier certificates](#How-do-barrier-certificates-fit-into-the-CRABS-algorithm)
 5. [pre-training](#Pre-training)
 6. [environments](#Environments)
 7. [results](#Results)
