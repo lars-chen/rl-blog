@@ -170,6 +170,9 @@ There were a battery tests that we could still try in the future, given more tim
 
 #### Double Pendulum with CRABS
 
+The CRABS algorithm we implemented rewarded the Double Inverted Pendulum for being in a more unsafe state, namely if the tip of the second pole was halfway to its maximum height such that bottom pole is straight and the top pole is bent at 90° angle.
+
+
 
 Epoch 5                    |  Epoch 10                |  Epoch 15
 :-------------------------:|:-------------------------:|:-------------------------:
@@ -177,7 +180,7 @@ Epoch 5                    |  Epoch 10                |  Epoch 15
 
 > **Figure 5.** CRABS agent visualized in Double Inverted Pendulum over the first few training epochs. 
 
-
+What we see in **Figure 5.** may be that it is attempting to learn this area of maximum reward. However, instead of learning the threshold where it is safe to bend its poles, in some trajectories the agent gets stuck perpetually spinning the top pole. This could be due to the fact that we did not fine tune the set of safe and unsafe states.
 
 #### Hopper with CRABS
 
