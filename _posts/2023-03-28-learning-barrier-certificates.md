@@ -126,7 +126,7 @@ We found that the environment reached a plateau of safety around 2000 steps. Whe
 
 Epoch 5                    |  Epoch 10                |  Epoch 15
 :-------------------------:|:-------------------------:|:-------------------------:
-<img src=https://github.com/lars-chen/rl-blog/blob/master/assets/images/double_train_5k.gif  width="200" height="200" />  |  <img src=https://github.com/lars-chen/rl-blog/blob/master/assets/images/double_train_10k.gif width="200" height="200" />   |  <img src=https://github.com/lars-chen/rl-blog/blob/master/assets/images/double_train_15k.gif width="200" height="200" /> 
+![epoch 5](https://github.com/lars-chen/rl-blog/blob/master/assets/images/double_train_5k.gif?raw=true)  |  ![epoch 10](https://github.com/lars-chen/rl-blog/blob/master/assets/images/double_train_10k.gif?raw=true) |  ![epoch 15](https://github.com/lars-chen/rl-blog/blob/master/assets/images/double_train_15k.gif?raw=true)
 
 
 
