@@ -175,7 +175,7 @@ Epoch 5                    |  Epoch 10                |  Epoch 15
 
 > **Figure 4.** CRABS agent visualized in Double Inverted Pendulum over the first few training epochs. 
 
-What we see in **Figure 5.** may be that it is attempting to learn this area of maximum reward. However, instead of learning the threshold where it is safe to bend its poles, in some trajectories the agent begins spinning the top pole (which is a desired result) but can’t help but fly off the track or bending the first pole further than our safety bound (undesired).
+What we see in **Figure 4.** may be that it is attempting to learn this area of maximum reward. However, instead of learning the threshold where it is safe to bend its poles, in some trajectories the agent begins spinning the top pole (which is a desired result) but can’t help but fly off the track or bending the first pole further than our safety bound (undesired).
 
 #### Hopper with CRABS
 
@@ -186,11 +186,17 @@ Epoch 5                    |  Epoch 10                |  Epoch 15
 > **Figure 5.** CRABS agent visualized in Hopper over the first few training epochs. 
 
 
+
 {% include uncert_hopper_100.html %}
 
 > **Figure 6.** Grid of states applied to the ensemble dynamics trained with CRABS in the Hopper environment. 
 
----------------
+To better to understand what was happening in the CRABS learning process in a higher dimensional environment, we created a grid of possible states over the leg and foot joint angles, keeping all other 9 observation dimensions constant at the starting position of the Hopper simulation. Additionally, the action space was limited to $$\vec{a} = (0, 0, 0)^intercal$$ . The foot and leg joints were chosen as observations since, in **Figure 5.**, these are the ones that are still moving, whereas the other joint angles remain static. The grid of states was then plugged into the ensemble $$N=5$$ dynamics model and the the standard deviation was calculated over the ensemble prediction for the next state.
+
+What can been seen over the 11 epochs that are visualized in **Figure 6.** is that the the dynamics model had some variance across the grid at epoch 0 and as training progresses the uncertainty of of the ensemble model becomes very low in the angle space that the agent stays in and loses certainty in the states that do not get explored anymore. Hence, we see that the dynamics model is likely working and that the difficulties learning may lie elsewhere than the model. 
+
+
+
 #### References
 ----------------
 
