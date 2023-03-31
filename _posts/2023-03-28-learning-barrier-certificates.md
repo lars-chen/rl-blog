@@ -134,7 +134,7 @@ The second environment is called "zoom" where we set up the Mujoco Hopper enviro
 ## Pre-training 
 In the methodology section we mentioned that this algorithm requires a pre-trained safe agent. The authors pre-trained with SAC for 10,000 steps and checked every following 1,000 steps whether the policy was safe, taking the first safe policy they found. Firt we verified their results on the cartpole environment.
 
-We found that the environment reached a plateau of safety around 2000 steps. When we ran this on Hover and Zoom, more complex environments, we were surprised/not surprised to find that pre-training needed xxxxxxx
+We found that the environment reached a plateau of safety around 2000 steps. When we ran this on Hover and Zoom, more complex environments, we were surprised to find that the more complex environments needed less steps (between 500 and 1000) than the cart pole environment. The below plots show the safety for different environments across multiple pretraining runs. The double pendulum and hopper environments are combined into one graph so the reader can contrast the time-frame in which it reaches safety.
 
 
 ![Pre-training Safety Violations Per Episode](https://github.com/lars-chen/rl-blog/blob/master/assets/images/pre-training-safety.png?raw=true)
