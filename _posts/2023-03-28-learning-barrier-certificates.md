@@ -113,6 +113,8 @@ In the methodology section we mentioned that this algorithm requires a pre-train
 
 We found that the environment reached a plateau of safety around 2000 steps. When we ran this on Hover and Zoom, more complex environments, we were surprised/not surprised to find that pre-training needed xxxxxxx
 
+<iframe src="https://wandb.ai/lars-chen1/crabs_runs?workspace=user-lars-chen1" style="border:none;height:1024px;width:100%">
+
 ![Hopper Pretrain Safety](https://github.com/lars-chen/rl-blog/blob/master/assets/images/hopper_pretraining.png?raw=true)
 
 
