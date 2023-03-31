@@ -134,6 +134,11 @@ Epoch 5                    |  Epoch 10                |  Epoch 15
 
 #### Hopper
 
+
+Epoch 5                    |  Epoch 10                |  Epoch 15
+:-------------------------:|:-------------------------:|:-------------------------:
+<img src=https://github.com/lars-chen/rl-blog/blob/master/assets/images/hopper_0%20(online-video-cutter.com).gif  width="250" height="250" />  |  <img src=https://github.com/lars-chen/rl-blog/blob/master/assets/images/hopper_20%20(online-video-cutter.com).gif width="250" height="250" />   |  <img src=https://github.com/lars-chen/rl-blog/blob/master/assets/images/hopper_30%20(online-video-cutter.com).gif width="250" height="250" /> 
+
 {% include uncert_hopper_100.html %}
 
 ---------------
