@@ -8,13 +8,14 @@ giscus_comments: true
 date: 2023-03-28
 ---
 
-##### Authors: *Lars Chen*, *Jeremiah Flannery*
+## Authors: 
+*Lars Chen*, *Jeremiah Flannery*
 
 ## Table of Contents
   * [Abstract](#abstract)
   * [Introduction](#introduction)
-  * [What are barrier certificates?](#what-are-barrier-certificates)
-  * [How do barrier certificates fit into the CRABS algorithm?](#how-do-barrier-certificates-fit-into-the-crabs-algorithm)
+  * [What are barrier certificates?](#what-are-barrier-certificates-)
+  * [How do barrier certificates fit into the CRABS algorithm?](#how-do-barrier-certificates-fit-into-the-crabs-algorithm-)
   * [Environments](#environments)
   * [Pre-training](#pre-training)
   * [Discussion](#discussion)
