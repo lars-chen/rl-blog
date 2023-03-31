@@ -37,6 +37,7 @@ There are already many unique and diverse strategies to accomplish the goal of s
 $$
 T : S \times A \Rightarrow S 
 $$
+
 >	The above dynamics model from CRABS maps a state-action pair onto a distribution of state spaces.
 
 
