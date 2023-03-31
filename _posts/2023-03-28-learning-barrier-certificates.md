@@ -88,11 +88,11 @@ Finally we re-optimize our policy while it is constrained by the barrier certifi
 
 ## Environments
 
-Swing             |  Cartpole
+Pendulum             |  Cartpole
 :-------------------------:|:-------------------------:
 ![Swing](https://github.com/lars-chen/rl-blog/blob/master/assets/images/pendulum_examp.gif?raw=true)    |  ![Cartpole](https://github.com/lars-chen/rl-blog/blob/master/assets/images/single_examp.gif?raw=true)
 
-> **Figure 1.** The paper tested the CRABS algorithm on the classic 'swing up' and 'cartpole' gym/mujoco environments. The swing GIF is taken from ![Pendulum Gym](https://www.gymlibrary.dev/environments/classic_control/pendulum/) documentation. Cartpole GIF was our generated during our verification process of the CRABS algorithm.
+> **Figure 1.** The paper tested the CRABS algorithm on the classic 'swing up' pendulum and 'cartpole' gym/mujoco environments. The swing GIF is taken from ![Pendulum Gym](https://www.gymlibrary.dev/environments/classic_control/pendulum/) documentation. Cartpole GIF was our generated during our verification process of the CRABS algorithm.
 
 
 
@@ -100,11 +100,11 @@ In the paper, the authors focused on low-dimensionality, high risk environments 
 
 We chose to expand into two new Mujoco environments with two cases: One where we increase the risk and one where we increase the complexity of the dynamics. 
 
-Double Cartpole             |  Hopper
+Double Inverted Pendulum         |  Hopper
 :-------------------------:|:-------------------------:
 ![Double](https://github.com/lars-chen/rl-blog/blob/master/assets/images/double_pendulum_71000%20.gif?raw=true)    |  ![Hopper](https://github.com/lars-chen/rl-blog/blob/master/assets/images/hopper860pre.gif?raw=true)
 
-> **Figure 2.** Our project aimed to extend the code to work on double inverted pendulum
+> **Figure 2.** Our project aimed to extend the code to work on ![double inverted pendulum](https://www.gymlibrary.dev/environments/mujoco/inverted_double_pendulum/) and ![hopper](https://www.gymlibrary.dev/environments/mujoco/hopper/). This table shows the double inverted pendulum and hopper agents pre-trained successfully SAC, before the CRABS algorithm was applied. 
 
 In the paper, the authors focused on low-dimensionality, high risk environments based on Cartpole and Pendulum. They were able to consistently find that CRABS has zero training-time violations while performing admirably (and sometimes better than other well known algorithms) in terms of reward maximization. We chose to expand the environments in two cases: One where we increase the risk and one where we increase the complexity of the dynamics. 
 The first environment we chose is called "Hover." It uses the double cartpole environment and rewards the agent when the tip of the second pole is halfway to its maximum height, while being unsafe if the first joint bends further than a strict threshold. 
@@ -118,31 +118,41 @@ We found that the environment reached a plateau of safety around 2000 steps. Whe
 
 ![Double Pretrain Safety](https://github.com/lars-chen/rl-blog/blob/master/assets/images/DoubleInvertedPretraining.png?raw=true)
 
+> **Figure 3.** Pretraining 'Double Inverted Pendulum' with SAC.
+
 
 
 ![Hopper Pretrain Safety](https://github.com/lars-chen/rl-blog/blob/master/assets/images/hopper_pretraining.png?raw=true)
+
+> **Figure 4.** Pretraining 'Hopper' with SAC.
 
 
 
 ## Results
 
-#### Double Pendulum
+#### Double Pendulum with CRABS
 
 
 Epoch 5                    |  Epoch 10                |  Epoch 15
 :-------------------------:|:-------------------------:|:-------------------------:
 ![epoch 5](https://github.com/lars-chen/rl-blog/blob/master/assets/images/double_train_5k.gif?raw=true)  |  ![epoch 10](https://github.com/lars-chen/rl-blog/blob/master/assets/images/double_train_10k.gif?raw=true) |  ![epoch 15](https://github.com/lars-chen/rl-blog/blob/master/assets/images/double_train_15k.gif?raw=true)
 
+> **Figure 5.** CRABS agent visualized in Double Inverted Pendulum over the first few training epochs. 
 
 
-#### Hopper
+
+#### Hopper with CRABS
 
 Epoch 5                    |  Epoch 10                |  Epoch 15
 :-------------------------:|:-------------------------:|:-------------------------:
 ![epoch 5](https://github.com/lars-chen/rl-blog/blob/master/assets/images/hopper_0.gif?raw=true)  |  ![epoch 10](https://github.com/lars-chen/rl-blog/blob/master/assets/images/hopper_20.gif?raw=true) |  ![epoch 15](https://github.com/lars-chen/rl-blog/blob/master/assets/images/hopper_30.gif?raw=true)
 
+> **Figure 6.** CRABS agent visualized in Hopper over the first few training epochs. 
+
 
 {% include uncert_hopper_100.html %}
+
+> **Figure 7.** Grid of states applied to the ensemble dynamics trained with CRABS in the Hopper environment. 
 
 ---------------
 #### References
