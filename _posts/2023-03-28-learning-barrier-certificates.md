@@ -136,16 +136,12 @@ In the methodology section we mentioned that this algorithm requires a pre-train
 
 We found that the environment reached a plateau of safety around 2000 steps. When we ran this on Hover and Zoom, more complex environments, we were surprised/not surprised to find that pre-training needed xxxxxxx
 
-![Double Pretrain Safety](https://github.com/lars-chen/rl-blog/blob/master/assets/images/DoubleInvertedPretraining.png?raw=true)
 
-> **Figure 3.** Pretraining 'Double Inverted Pendulum' with SAC.
+Double Inverted Pendulum Pre-training         |  Hopper Pre-training
+:-------------------------:|:-------------------------:
+![Double](https://github.com/lars-chen/rl-blog/blob/master/assets/images/DoubleInvertedPretraining.png?raw=true)    |  ![Hopper](https://github.com/lars-chen/rl-blog/blob/master/assets/images/hopper_pretraining.png?raw=true)
 
-
-
-![Hopper Pretrain Safety](https://github.com/lars-chen/rl-blog/blob/master/assets/images/hopper_pretraining.png?raw=true)
-
-> **Figure 4.** Pretraining 'Hopper' with SAC.
-
+> **Figure 3.** Pretraining 'Double Inverted Pendulum' and 'Hopper' pretraining with SAC.
 
 
 ## Discussion
@@ -178,7 +174,7 @@ Epoch 5                    |  Epoch 10                |  Epoch 15
 :-------------------------:|:-------------------------:|:-------------------------:
 ![epoch 5](https://github.com/lars-chen/rl-blog/blob/master/assets/images/double_train_5k.gif?raw=true)  |  ![epoch 10](https://github.com/lars-chen/rl-blog/blob/master/assets/images/double_train_10k.gif?raw=true) |  ![epoch 15](https://github.com/lars-chen/rl-blog/blob/master/assets/images/double_train_15k.gif?raw=true)
 
-> **Figure 5.** CRABS agent visualized in Double Inverted Pendulum over the first few training epochs. 
+> **Figure 4.** CRABS agent visualized in Double Inverted Pendulum over the first few training epochs. 
 
 What we see in **Figure 5.** may be that it is attempting to learn this area of maximum reward. However, instead of learning the threshold where it is safe to bend its poles, in some trajectories the agent gets stuck perpetually spinning the top pole. This could be due to the fact that we did not fine tune the set of safe and unsafe states.
 
@@ -188,12 +184,12 @@ Epoch 5                    |  Epoch 10                |  Epoch 15
 :-------------------------:|:-------------------------:|:-------------------------:
 ![epoch 5](https://github.com/lars-chen/rl-blog/blob/master/assets/images/hopper_0.gif?raw=true)  |  ![epoch 10](https://github.com/lars-chen/rl-blog/blob/master/assets/images/hopper_20.gif?raw=true) |  ![epoch 15](https://github.com/lars-chen/rl-blog/blob/master/assets/images/hopper_30.gif?raw=true)
 
-> **Figure 6.** CRABS agent visualized in Hopper over the first few training epochs. 
+> **Figure 5.** CRABS agent visualized in Hopper over the first few training epochs. 
 
 
 {% include uncert_hopper_100.html %}
 
-> **Figure 7.** Grid of states applied to the ensemble dynamics trained with CRABS in the Hopper environment. 
+> **Figure 6.** Grid of states applied to the ensemble dynamics trained with CRABS in the Hopper environment. 
 
 ---------------
 #### References
