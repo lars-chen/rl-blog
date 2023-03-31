@@ -132,10 +132,10 @@ Epoch 5                    |  Epoch 10                |  Epoch 15
 
 #### Hopper
 
-
 Epoch 5                    |  Epoch 10                |  Epoch 15
 :-------------------------:|:-------------------------:|:-------------------------:
-<img src=https://github.com/lars-chen/rl-blog/blob/master/assets/images/hopper_0.gif  width="200" height="200" />  |  <img src=https://github.com/lars-chen/rl-blog/blob/master/assets/images/hopper_20.gif width="200" height="200" />   |  <img src=https://github.com/lars-chen/rl-blog/blob/master/assets/images/hopper_30.gif width="200" height="200" /> 
+![epoch 5](https://github.com/lars-chen/rl-blog/blob/master/assets/images/hopper_0.gif?raw=true)  |  ![epoch 10](https://github.com/lars-chen/rl-blog/blob/master/assets/images/hopper_20.gif?raw=true) |  ![epoch 15](https://github.com/lars-chen/rl-blog/blob/master/assets/images/hopper_30.gif?raw=true)
+
 
 {% include uncert_hopper_100.html %}
 
