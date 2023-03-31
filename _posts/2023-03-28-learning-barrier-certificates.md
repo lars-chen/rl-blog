@@ -10,15 +10,18 @@ date: 2023-03-28
 
 Authors: *Lars Chen*, *Jeremiah Flannery*
 
-### Table of Contents
-1. [Abstract](#Abstract)
-2. [Introduction](#Introduction)
-3. [What are barrier certificates?](#What-are-barrier-certificates)
-4. [Learning barrier certificates](#How-do-barrier-certificates-fit-into-the-CRABS-algorithm)
-5. [Pre-training](#Pre-training)
-6. [Environments](#Environments)
-7. [Discussion](#Discussion)
-8. [References](#References)
+## Table of Contents
+
+  * [Abstract](#abstract)
+  * [Introduction](#introduction)
+  * [What are barrier certificates?](#what-are-barrier-certificates)
+  * [How do barrier certificates fit into the CRABS algorithm?](#how-do-barrier-certificates-fit-into-the-crabs-algorithm)
+  * [Environments](#environments)
+  * [Pre-training](#pre-training)
+  * [Discussion](#discussion)
+      - [Double Pendulum with CRABS](#double-pendulum-with-crabs)
+      - [Hopper with CRABS](#hopper-with-crabs)
+  * [References](#references)
 
 
 ## Abstract
