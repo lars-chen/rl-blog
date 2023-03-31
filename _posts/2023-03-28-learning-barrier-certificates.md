@@ -8,8 +8,7 @@ giscus_comments: true
 date: 2023-03-28
 ---
 
-## Authors: 
-*Lars Chen*,  *Jeremiah Flannery*
+#### Authors: *Lars Chen*,  *Jeremiah Flannery*
 
 <a name="abs"></a>
 ## Abstract
