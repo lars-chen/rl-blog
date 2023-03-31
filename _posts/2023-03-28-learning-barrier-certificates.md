@@ -95,6 +95,7 @@ Swing             |  Cartpole
 > **Figure 1.** The paper tested the CRABS algorithm on the classic 'swing up' and 'cartpole' gym/mujoco environments. The swing GIF is taken from ![Pendulum Gym](https://www.gymlibrary.dev/environments/classic_control/pendulum/) documentation. Cartpole GIF was our generated during our verification process of the CRABS algorithm.
 
 
+
 In the paper, the authors focused on low-dimensionality, high risk environments based on Cartpole and Pendulum in the Gym-Mujoco[^TodorovErezTasa2012] simulation suite. They were able to consistently find that CRABS has zero training-time violations while performing admirably (and sometimes better than other well known algorithms) in terms of reward maximization. 
 
 We chose to expand into two new Mujoco environments with two cases: One where we increase the risk and one where we increase the complexity of the dynamics. 
@@ -103,7 +104,7 @@ Double Cartpole             |  Hopper
 :-------------------------:|:-------------------------:
 ![Double](https://github.com/lars-chen/rl-blog/blob/master/assets/images/double_pendulum_71000%20.gif?raw=true)    |  ![Hopper](https://github.com/lars-chen/rl-blog/blob/master/assets/images/hopper860pre.gif?raw=true)
 
-> **Figure 2.** 
+> **Figure 2.** Our project aimed to extend the code to work on double inverted pendulum
 
 In the paper, the authors focused on low-dimensionality, high risk environments based on Cartpole and Pendulum. They were able to consistently find that CRABS has zero training-time violations while performing admirably (and sometimes better than other well known algorithms) in terms of reward maximization. We chose to expand the environments in two cases: One where we increase the risk and one where we increase the complexity of the dynamics. 
 The first environment we chose is called "Hover." It uses the double cartpole environment and rewards the agent when the tip of the second pole is halfway to its maximum height, while being unsafe if the first joint bends further than a strict threshold. 
