@@ -90,7 +90,8 @@ Finally we re-optimize our policy while it is constrained by the barrier certifi
 
 Swing             |  Cartpole
 :-------------------------:|:-------------------------:
-![Pendulum](https://github.com/lars-chen/rl-blog/blob/master/assets/images/pendulum_examp.gif?raw=true)   |  ![Cartpole](https://github.com/lars-chen/rl-blog/blob/master/assets/images/safeinvpendulum_test.gif)
+<img src=https://github.com/lars-chen/rl-blog/blob/master/assets/images/pendulum_examp.gif  width="250" height="250" /> | <img src=https://github.com/lars-chen/rl-blog/blob/master/assets/images/safeinvpendulum_test.gif  width="250" height="250" />
+
 
 
 In the paper, the authors focused on low-dimensionality, high risk environments based on Cartpole and Pendulum in the Gym-Mujoco[^TodorovErezTasa2012] simulation suite. They were able to consistently find that CRABS has zero training-time violations while performing admirably (and sometimes better than other well known algorithms) in terms of reward maximization. 
