@@ -90,7 +90,7 @@ Finally we re-optimize our policy while it is constrained by the barrier certifi
 
 Swing             |  Cartpole
 :-------------------------:|:-------------------------:
-![Swing](https://github.com/lars-chen/rl-blog/blob/master/assets/images/pendululum_examp.gif)    |  ![Cartpole](https://github.com/lars-chen/rl-blog/blob/master/assets/images/single_examp.gif)
+![Swing](https://github.com/lars-chen/rl-blog/blob/master/assets/images/pendulum_examp.gif)    |  ![Cartpole](https://github.com/lars-chen/rl-blog/blob/master/assets/images/single_examp.gif)
 
 
 
