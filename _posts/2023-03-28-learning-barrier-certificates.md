@@ -95,10 +95,14 @@ Where the term $$\underset{\phi}{C*}$$ is derived from $$C_{h}$$ being the set o
 
 Now that we have covered the novel part of CRABS, we need to address the infrastructure of the algorithm and how it co-trains the barrier certificates along with the dynamics model.
 The first step of CRABS is to pretrain a soft-actor-critic policy, $$\pi_{init}$$[^Haarnoja2018] until one is satisfied that the agent behaves safely.
-The second step is to safely explore. Exploration is performed by adding gaussian noise to the SAC agent and having it make actions. When any action leaves certified space, the agent falls back on a safeguard policy.
-Exploration has added new trajectories to our buffer of simulations, which allows us to recalibrate our dynamics model, $$\hat{T}$$ #todo put in pi and thats here. 
+The second step is to safely explore. Exploration is performed by adding gaussian noise to the SAC agent and having it make actions. When any action leaves certified space, the agent falls back on a safeguard policy. During the first epoch the safeguar policy will simply be $$\pi_{init}$$.
+Exploration has added new trajectories to our buffer of simulations, $$\hat{D}$$. This allows us to recalibrate our dynamics model, $$\hat{T}$$. $$\hat{T}$$ is paramaterized multiple neural networks, $$\omega$$, and updated by minimzing the negative log likelihood of the seqeunces in the replay buffer happening:
+
+$$
+\mathcal{L}_{$$\hat{T}$$} \omega = \mathbb{E}
+$$
 Because the dynamics model has become more confident about our environment, it allows us to retrain the barrier certificate to expand the number of verified regions.
-Finally we re-optimize our policy while it is constrained by the barrier certificate. 
+Finally we re-optimize our policy $$\pi$$ while it is constrained by the barrier certificate. 
 
 
 ## Environments
