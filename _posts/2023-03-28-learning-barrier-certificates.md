@@ -42,7 +42,7 @@ There are already many unique and diverse strategies to accomplish the goal of s
 $$
 T : S \times A \Rightarrow S 
 $$
->	The above dynamics model $$T$$ from CRABS maps a state-action pair onto a distribution of state spaces.
+>	The above dynamics model from CRABS maps a state-action pair onto a distribution of state spaces.
 
 
 CRABS falls firmly into being model-based and modifying exploration behavior. Before going into details of CRABS we will mention other strategies that exemplify the diversity of the categories above. One sub-area of staying within constraints is Trust Region Policy Optimization, which guarantees policies do not make too large of leaps by requiring new policies have a low KL-Divergence from an old safe policy. [^Schulman2017] Grown out of Trust Region methods is Constraint Policy Optimization [^Achiam2017] (CPO), one of the most well-known recent model-free developments in RL. It is a gradient method that optimizes a constraint cost, $$J$$,  for a policy update. CPO ultimately learns to approximate the constraint cost by encountering unsafe states and comparing these to safe states. The actor-critic method, which isolates the reward function and value function to separate agents has also been combined with CPO, again needing to encounter unsafe states but yielding even higher rewards. [^Balakrishna2017] 
