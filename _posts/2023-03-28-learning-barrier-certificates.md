@@ -15,8 +15,8 @@ date: 2023-03-28
 ### Table of Contents
 1. [abstract](#Abstract)
 2. [introduction](#Introduction)
-3. [what are barrier certificates?](#What are Barrier Certificates?)
-4. [learning barrier certificates](#How do barrier certificates fit into the CRABS algorithm?)
+3. [what are barrier certificates?](#What-are-Barrier-Certificates?)
+4. [learning barrier certificates](#How-do-barrier-certificates-fit-into-the-CRABS-algorithm?)
 5. [environments](#Environments)
 6. [pre-training ](#Pre-training )
 7. [results](#Results)
@@ -163,7 +163,7 @@ Epoch 5                    |  Epoch 10                |  Epoch 15
 
 {% include uncert_hopper_100.html %}
 
-> **Figure 7.** Grid of states applied to the ensemble dynamics trained with CRABS in the Hopper environment. 
+> **Figure 7.** Grid of states applied to the ensemble of dynamics models trained with CRABS in the Hopper environment. 
 
 ---------------
 #### References
