@@ -179,7 +179,9 @@ Epoch 5                    |  Epoch 10                |  Epoch 15
 
 [^Gu2023]: Gu, S., 2023. A Review of Safe Reinforcement Learning: Methods, Theory and Applications. _arXiv.org_, p.10330. Available at: [https://arxiv.org/abs/2205.10330](https://arxiv.org/abs/2205.10330).
 
-[^Schulman2017]: Schulman, J., 2023. Trust Region Policy Optimization _arXiv.org_, p.05477. 
+[^Schulman2017]: Schulman, J., 2023. Trust Region Policy Optimization _arXiv.org_, p.05477. Available at: [https://arxiv.org/abs/1502.05477](https://arxiv.org/abs/1502.05477)
+
+[^Achiam2017]: Achiam, J., Held, D., Tamar, A., & Abbeel, P. Constrained Policy Optimization _arXiv.org_, p.10528. Available at: [https://arxiv.org/abs/1705.10528](https://arxiv.org/abs/1705.10528)
 
 [^Balakrishna2017]: Thananjeyan, B., &amp; Balakrishna, A 2021. Recovery RL: Safe Reinforcement Learning with Learned Recovery Zones _arXiv.org_, p.15920. Available at: [https://arxiv.org/pdf/2010.15920.pdf](https://arxiv.org/pdf/2010.15920.pdf)
 
