@@ -1,5 +1,6 @@
 ---
 title:  "Learning Barrier Certificates in Higher Dimensional Mujoco Environments"
+permalink: posts/2023-03-28-learning-barrier-certificates
 mathjax: true
 layout: post
 categories: media
