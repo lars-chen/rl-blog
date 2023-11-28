@@ -2,10 +2,7 @@
 title:  "Learning Barrier Certificates in Higher Dimensional Mujoco Environments"
 permalink: /posts/2023/03/learning-barrier-certificates
 mathjax: true
-layout: post
-categories: media
 author: Lars Chen, Jeremiah Flannery
-giscus_comments: true
 date: 2023-03-28
 ---
 
