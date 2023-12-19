@@ -17,19 +17,6 @@ Having a barrier function verify safe states is an often-used strategy to guaran
 
 <!-- pagebreak -->
 
-## Table of Contents
-  * [Abstract](#abs)
-  * [Introduction](#intro)
-  * [What are barrier certificates?](#bc)
-  * [How do barrier certificates fit into the CRABS algorithm?](#lbc)
-  * [Environments](#env)
-  * [Pre-training](#pre)
-  * [Discussion](#disc)
-      - [Double Pendulum with CRABS](#double)
-      - [Hopper with CRABS](#hopper)
-  * [References](#ref)
-
-
 <a name="intro"></a>
 ## Introduction
 
