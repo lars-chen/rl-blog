@@ -5,8 +5,3 @@ This [blog post](https://lars-chen.github.io/rl-blog/learning-barrier-certificat
 
 The original paper by Luo and Ma is available on Arxiv: https://arxiv.org/pdf/2108.01846.pdf
 
-## Blog License
-
-[public domain](http://unlicense.org/)
-
-
